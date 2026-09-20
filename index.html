@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -82,7 +81,7 @@
       align-items: center;
     }
 
-    .hero h1, .hero p, .btn-primary, .hero .card {
+    .hero h1, .hero p, .hero .btn-primary, .hero .btn-secondary, .hero .card {
       opacity: 0;
       transform: translateY(40px);
     }
@@ -104,6 +103,12 @@
       line-height: 1.6;
     }
 
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
     .btn-primary {
       background: var(--gold);
       color: #0b0b0d;
@@ -113,17 +118,39 @@
       font-weight: 600;
       font-size: 15px;
       transition: 0.3s;
+      display: inline-block;
     }
 
     .btn-primary:hover { background: #c9a33a; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(212,175,55,0.15);
+    }
 
     .card {
       background: var(--card);
       padding: 28px;
       border-radius: 20px;
       border: 1px solid rgba(212,175,55,0.25);
-      opacity: 0;
-      transform: translateY(40px);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
     }
 
     .card h3 {
@@ -163,9 +190,12 @@
       gap: 26px;
     }
 
-    .cards .card:hover {
-      transform: translateY(-6px);
-      border-color: var(--gold);
+    .cards .card img, 
+    .cards .card video {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 15px;
+      display: block;
     }
 
     .cta {
@@ -176,6 +206,43 @@
       border-top: 1px solid rgba(212,175,55,0.25);
       opacity: 0;
       transform: translateY(40px);
+    }
+
+    .cta h2 {
+      color: var(--gold);
+      margin-bottom: 30px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .cta-btn:hover {
+      background: rgba(212,175,55,0.15);
+    }
+
+    .cta-btn.email {
+      background: var(--gold);
+      color: #0b0b0d;
+    }
+
+    .cta-btn.email:hover {
+      background: #c9a33a;
     }
 
     footer {
@@ -201,10 +268,114 @@
       align-items: center;
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
       z-index: 9999;
+      transition: 0.2s;
     }
-    .whatsapp-btn img { width: 35px; }
-    .whatsapp-btn:hover { transform: scale(1.1); transition: 0.2s; }
 
+    .whatsapp-btn img { width: 35px; }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+
+    /* About Section */
+    .about-section {
+      margin-top: 100px;
+      padding: 80px 20px;
+      background: #111114;
+      border-top: 1px solid rgba(212,175,55,0.25);
+    }
+
+    .about-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-left {
+      text-align: center;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .about-left h2 {
+      color: var(--gold);
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .about-left .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .about-right h2 {
+      color: var(--gold);
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .about-right > p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .about-right h3 {
+      color: var(--gold);
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      .hero p {
+        margin: 0 auto 32px auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        margin-left: 15px;
+        font-size: 13px;
+      }
+
+      .btn-outline {
+        margin-left: 15px;
+        padding: 8px 16px;
+      }
+    }
   </style>
 </head>
 
@@ -232,121 +403,148 @@
     <div>
       <h1><span>Création de sites web sur mesure & élégants</span></h1>
       <p>Des sites haut de gamme, élégants, minimalistes et conçus pour sublimer votre image de marque.</p>
-      <a href="#portfolio" class="btn-primary">Mes réalisations</a>
+      
+      <!-- BOUTONS HERO CÔTE À CÔTE -->
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn-primary">Mes réalisations</a>
+        <a href="#about-me" class="btn-secondary">À propos de moi</a>
+      </div>
     </div>
 
     <div class="card">
-      <h3>ConceptDesignArt • Graphiste/Designer </h3>
+      <h3>ConceptDesignArt • Graphiste/Designer</h3>
       <p>Spécialiste des univers premium, branding haut de gamme et interfaces élégantes.</p>
-    </div>
-  </section>
-
-      </div>
     </div>
   </section>
 
   <!-- PORTFOLIO -->
   <section id="portfolio" style="margin-top: 80px;">
-    <h2>Mes Réalisations </h2>
-    <p class="section-sub">Sélection de projets </p>
+    <h2>Mes Réalisations</h2>
+    <p class="section-sub">Sélection de projets</p>
 
     <div class="cards">
 
+      <!-- Carte 1 -->
       <div class="card">
-        
+        <h3>La Popote des Îles</h3>
+        <img src="https://i.ibb.co/7JyRDXJv/flyer-new.png" alt="La Popote des Îles">
+      </div>
 
-      <!-- ⭐ TES FLYERS ⭐ -->
+      <!-- Carte 2 -->
+      <div class="card">
+        <h3>Viana Hairbody</h3>
+       des produits de beauté naturels, huiles essentielles, ou soins cosmétiques <img src="https://i.ibb.co/MkRpvJGS/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Viana Hairbody">
+      </div>
 
-     <div class="card">
-    <h3>La Popote des Îles</h3>
-    <img src="https://i.ibb.co/7JyRDXJv/flyer-new.png"
-         style="width:100%; border-radius:12px; margin-top:15px;">
-</div>
+      <!-- Carte 3 -->
+      <div class="card">
+        <h3>Evasion Nautique</h3>
+        <p style="color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 15px;">
+          Excursions touristiques en jet ski et location de matériel nautique.
+        </p>
+        <img src="https://i.postimg.cc/02hSrc9x/EVASION.png" alt="Flyer EVASION HD" style="max-width:350px; margin:15px auto;">
+      </div>
 
-      
-  <!-- Tes autres réalisations -->
+      <!-- Carte 4 -->
+      <div class="card">
+        <h3>Au Bouti Food</h3>
+        <p style="color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 15px;">
+          Découvrez nos délicieux plats, snacks et spécialités.<br>
+          À emporter ou sur place, pour une pause gourmande et conviviale.
+        </p>
+        <img src="https://i.ibb.co/NnbZJNXQ/bouti-food.jpg" alt="Au Bouti Food">
+      </div>
 
-  <!-- ⭐ COLLER ICI TON FLYER EVASION ⭐ -->
-  
-<!-- ⭐ VIDEO EN DESSOUS ⭐ -->
-<div class="card">
-  <h3>Evasion Nautique</h3>
+      <!-- Carte 5 -->
+      <div class="card">
+        <h3>FastIdf - Taxi Moto sur Paris</h3>
+        <video controls preload="metadata" style="border: 1px solid rgba(212,175,55,0.25);">
+          <source src="https://videotourl.com/videos/1789300238144-fdab23ac-c265-407c-930a-ecc010ef0980.mov" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture de cette vidéo.
+        </video>
+      </div>
 
-  <p style="color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 15px;">
-    Excursions touristiques encadrées en jet ski.<br>
-    Location de matériel nautique et de plage pour adultes & enfants : paddles, pédalos, kayaks.
-  </p>
+      <!-- Carte 6 -->
+      <div class="card">
+        <h3>Logo - PA ESSAYE SA</h3>
+        <img src="https://i.ibb.co/kVdLD8q0/logo-premium.png" alt="Logo Premium PNG" style="max-width:350px; margin:15px auto;">
+      </div>
 
-  <!-- Flyer EVASION avec zoom -->
-  <img src="https://i.postimg.cc/02hSrc9x/EVASION.png"
-       alt="Flyer EVASION HD"
-       style="width:80%; max-width:350px; display:block; margin:15px auto; border-radius:12px;">
-</div>
-
-<!-- ⭐ VIDEO EN DESSOUS ⭐ -->
-<div class="card" style="margin-top:20px;">
-    <h3>FastIdf - taxi moto sur Paris </h3>
-
-    <video controls preload="metadata"
-           style="width:100%; border-radius:18px; margin-top:15px; border:1px solid rgba(212,175,55,0.25);">
-        <source src="https://videotourl.com/videos/1789300238144-fdab23ac-c265-407c-930a-ecc010ef0980.mov" type="video/mp4">
-    </video>
-</div>
-
-
-
-
-</div>
-
-      <!-- ⭐ NOUVELLE IMAGE AVEC TON LIEN POSTIMAGES ⭐ -->
-
-     <div class="card">
-    <h3>Logo - PA ESSAYE SA</h3>
-    <img src="https://i.ibb.co/kVdLD8q0/logo-premium.png"
-         alt="Logo Premium PNG"
-         style="width:80%; border-radius:12px; margin:15px auto; display:block;">
-</div>
-
-
-
-    </div>
+    </div> <!-- Fin de la grille .cards -->
   </section>
 
 </div>
 
+<!-- ABOUT ME -->
+<section id="about-me" class="about-section">
+  <div class="about-grid">
+
+    <!-- Colonne gauche -->
+    <div class="about-left">
+      <img src="https://i.ibb.co/FLywgXTT/Chat-GPT-Image-13-sept-2026-10-46-39.png"
+           alt="Photo de Anthony"
+           class="avatar">
+
+      <h2>Anthony</h2>
+      <p class="subtitle">Développeur Web & Designer</p>
+
+      <div class="contact-info">
+        <p>📍 Dijon, France</p>
+        <p>📧 elisabethanthony@hotmail.fr</p>
+        <p>📞 07 87 15 57 32</p>
+      </div>
+    </div>
+
+    <!-- Colonne droite -->
+    <div class="about-right">
+      <h2>À propos de moi</h2>
+      <p>
+        Passionné par la création digitale depuis l'age de 15 ans, je conçois des sites web élégants, modernes et optimisés.
+        Mon objectif est d'offrir une identité visuelle forte, professionnelle et adaptée à chaque projet.
+      </p>
+
+      <h3>Ce que je fais</h3>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Développement Web</h3>
+          <p>Sites vitrines premium, intégration HTML/CSS, animations JS.</p>
+        </div>
+
+        <div class="card">
+          <h3>Design Graphique</h3>
+          <p>Flyers, logos, branding haut de gamme.</p>
+        </div>
+
+        <div class="card">
+          <h3>WordPress</h3>
+          <p>Création, optimisation et personnalisation de thèmes.</p>
+        </div>
+
+        <div class="card">
+          <h3>Responsive</h3>
+          <p>Adaptation parfaite mobile, tablette et desktop.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta" id="contact">
   <h2>Créons ensemble une identité qui vous distingue ?</h2>
-
-  <!-- Bouton Email -->
-  <a href="mailto:elisabethanthony@hotmail.fr"
-
-  </a>
-
-  <!-- Bouton Instagram Luxe -->
-  <a href="https://www.instagram.com/conceptartdesign2024?stkn=MWdjdzd4M2l1enh2dQ%3D%3D&utm_source=qr"
-     target="_blank"
-     style="
-       display:inline-block;
-       margin-top:20px;
-       padding:12px 28px;
-       border-radius:999px;
-       border:1px solid var(--gold);
-       color:var(--gold);
-       text-decoration:none;
-       font-size:15px;
-       font-weight:600;
-       transition:0.3s;
-     ">
-     Instagram • ConceptArtDesign
-  </a>
-</section>
-
+  <div class="cta-buttons">
+    <a href="mailto:elisabethanthony@hotmail.fr" class="cta-btn email">✉️ Envoyer un email</a>
+    <a href="https://www.instagram.com/conceptartdesign2024?stkn=MWdjdzd4M2l1enh2dQ%3D%3D&utm_source=qr"
+       target="_blank"
+       class="cta-btn">📸 Instagram • ConceptArtDesign</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  © 2026 —CoceptArtDesign
+  © 2026 — ConceptArtDesign
 </footer>
 
 <!-- GSAP ANIMATIONS -->
@@ -355,7 +553,11 @@
 
   gsap.to(".hero h1", { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" });
   gsap.to(".hero p", { opacity: 1, y: 0, duration: 1.2, delay: 0.2, ease: "power3.out" });
-  gsap.to(".btn-primary", { opacity: 1, y: 0, duration: 1.2, delay: 0.4, ease: "power3.out" });
+  
+  // Animation des deux boutons
+  gsap.to(".hero .btn-primary", { opacity: 1, y: 0, duration: 1.2, delay: 0.4, ease: "power3.out" });
+  gsap.to(".hero .btn-secondary", { opacity: 1, y: 0, duration: 1.2, delay: 0.5, ease: "power3.out" });
+  
   gsap.to(".hero .card", { opacity: 1, y: 0, duration: 1.2, delay: 0.6, ease: "power3.out" });
 
   gsap.utils.toArray("section h2, section p.section-sub, .cards .card, .cta").forEach(el => {

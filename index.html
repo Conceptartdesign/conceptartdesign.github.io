@@ -12,16 +12,19 @@
   <style>
     :root {
       --bg: #0b0b0d;
-      --card-bg: rgba(20, 20, 24, 0.6);
+      --card: #141418;
       --gold: #d4af37;
       --text: #f5f5f5;
       --muted: #b3b3b3;
-      --glass-border: rgba(212, 175, 55, 0.15);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    a { text-decoration: none; color: inherit; }
+    /* Reset global pour enlever tout soulignement bleu */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     body {
       font-family: "Segoe UI", system-ui, sans-serif;
@@ -36,21 +39,12 @@
       padding: 0 24px;
     }
 
-    /* NAVBAR GLASS */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 20px 24px;
+      padding: 28px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 1000;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      background: rgba(11, 11, 13, 0.7);
-      border-bottom: 1px solid var(--glass-border);
+      border-bottom: 1px solid rgba(212,175,55,0.25);
       opacity: 0;
     }
 
@@ -79,16 +73,12 @@
       font-size: 14px;
       margin-left: 26px;
       transition: 0.3s;
-      backdrop-filter: blur(10px);
     }
 
-    .btn-outline:hover { 
-      background: rgba(212,175,55,0.15); 
-    }
+    .btn-outline:hover { background: rgba(212,175,55,0.15); }
 
-    /* HERO SECTION */
     .hero {
-      padding: 140px 0 80px;
+      padding: 80px 0;
       display: grid;
       grid-template-columns: 1.3fr 1fr;
       gap: 60px;
@@ -134,64 +124,35 @@
       display: inline-block;
     }
 
-    .btn-primary:hover { 
-      background: #c9a33a; 
-      box-shadow: 0 0 30px rgba(212,175,55,0.3);
-    }
+    .btn-primary:hover { background: #c9a33a; }
 
-    /* BOUTON GLASS TOGGLE */
     .btn-secondary {
-      background: rgba(212, 175, 55, 0.05);
+      background: transparent;
       color: var(--gold);
-      border: 1px solid var(--glass-border);
+      border: 1px solid var(--gold);
       padding: 14px 28px;
       border-radius: 999px;
       font-weight: 600;
       font-size: 15px;
       transition: 0.3s;
       display: inline-block;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
     }
 
     .btn-secondary:hover {
       background: rgba(212,175,55,0.15);
-      border-color: var(--gold);
-      box-shadow: 0 0 20px rgba(212,175,55,0.2);
     }
 
-    /* CARTE GLASSMORPHISM */
     .card {
-      background: var(--card-bg);
+      background: var(--card);
       padding: 28px;
       border-radius: 20px;
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      transition: 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.05), transparent);
-      transition: 0.6s;
-    }
-
-    .card:hover::before {
-      left: 100%;
+      border: 1px solid rgba(212,175,55,0.25);
+      transition: 0.3s;
     }
 
     .card:hover {
       transform: translateY(-6px);
-      border-color: rgba(212,175,55,0.4);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 0 20px rgba(212,175,55,0.1);
+      border-color: var(--gold);
     }
 
     .card h3 {
@@ -239,36 +200,12 @@
       display: block;
     }
 
-    /* IMAGE ZOOM EFFECT */
-    .zoom-container {
-      width: 100%;
-      height: 180px;
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: zoom-in;
-      margin-top: 15px;
-    }
-
-    .zoom-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-      transition: transform 0.5s ease;
-    }
-
-    .zoom-container:hover img {
-      transform: scale(1.1);
-    }
-
-    /* CTA SECTION GLASS */
     .cta {
       text-align: center;
       padding: 80px 20px;
-      background: rgba(17, 17, 20, 0.8);
+      background: #111114;
       margin-top: 80px;
-      border-top: 1px solid var(--glass-border);
-      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(212,175,55,0.25);
       opacity: 0;
       transform: translateY(40px);
     }
@@ -289,28 +226,24 @@
       display: inline-block;
       padding: 14px 28px;
       border-radius: 999px;
-      border: 1px solid var(--glass-border);
+      border: 1px solid var(--gold);
       color: var(--gold);
       font-size: 15px;
       font-weight: 600;
       transition: 0.3s;
-      backdrop-filter: blur(10px);
     }
 
     .cta-btn:hover {
       background: rgba(212,175,55,0.15);
-      border-color: var(--gold);
     }
 
     .cta-btn.email {
       background: var(--gold);
       color: #0b0b0d;
-      border: none;
     }
 
     .cta-btn.email:hover {
       background: #c9a33a;
-      box-shadow: 0 0 30px rgba(212,175,55,0.3);
     }
 
     footer {
@@ -318,41 +251,36 @@
       padding: 40px 0;
       color: var(--muted);
       font-size: 14px;
-      border-top: 1px solid var(--glass-border);
+      border-top: 1px solid rgba(212,175,55,0.25);
       margin-top: 40px;
     }
 
-    /* WHATSAPP GLASS BUTTON */
+    /* WhatsApp */
     .whatsapp-btn {
       position: fixed;
       bottom: 25px;
       right: 25px;
       width: 60px;
       height: 60px;
-      background: rgba(37, 211, 102, 0.9);
+      background: #25D366;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 0 20px rgba(37,211,102,0.4);
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
       z-index: 9999;
       transition: 0.2s;
-      backdrop-filter: blur(10px);
     }
 
     .whatsapp-btn img { width: 35px; }
-    .whatsapp-btn:hover { 
-      transform: scale(1.1); 
-      box-shadow: 0 0 30px rgba(37,211,102,0.6);
-    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
 
-    /* ABOUT SECTION */
+    /* About Section */
     .about-section {
       margin-top: 100px;
       padding: 80px 20px;
-      background: rgba(17, 17, 20, 0.5);
-      border-top: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px);
+      background: #111114;
+      border-top: 1px solid rgba(212,175,55,0.25);
     }
 
     .about-grid {
@@ -364,7 +292,9 @@
       align-items: center;
     }
 
-    .about-left { text-align: center; }
+    .about-left {
+      text-align: center;
+    }
 
     .avatar {
       width: 160px;
@@ -373,7 +303,6 @@
       border: 3px solid var(--gold);
       object-fit: cover;
       margin-bottom: 20px;
-      box-shadow: 0 0 30px rgba(212,175,55,0.2);
     }
 
     .about-left h2 {
@@ -414,44 +343,53 @@
       margin-bottom: 20px;
     }
 
-    /* EXEMPLES DE SITES SECTION */
-    .exemples-section {
-      margin-top: 100px;
-      padding: 80px 20px;
-      background: rgba(17, 17, 20, 0.5);
-      border-top: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px);
-    }
-
-    /* RESPONSIVE */
+    /* Responsive */
     @media (max-width: 768px) {
       .hero {
         grid-template-columns: 1fr;
-        padding: 120px 0 40px;
+        padding: 40px 0;
         text-align: center;
       }
 
-      .hero p { margin: 0 auto 32px auto; }
-      .hero-buttons { justify-content: center; }
-      .hero h1 { font-size: 36px; }
-      .about-grid { grid-template-columns: 1fr; }
+      .hero p {
+        margin: 0 auto 32px auto;
+      }
 
-      nav a { margin-left: 15px; font-size: 13px; }
-      .btn-outline { margin-left: 15px; padding: 8px 16px; }
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        margin-left: 15px;
+        font-size: 13px;
+      }
+
+      .btn-outline {
+        margin-left: 15px;
+        padding: 8px 16px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- WhatsApp Glass Button -->
+<!-- WhatsApp -->
 <a href="https://wa.me/33787155732" class="whatsapp-btn" target="_blank">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
 <div class="container">
 
-  <!-- HEADER GLASS -->
+  <!-- HEADER -->
   <header>
     <div class="logo">ANTHONY • LUXE</div>
     <nav>
@@ -486,23 +424,27 @@
 
     <div class="cards">
 
+      <!-- Carte 1 -->
       <div class="card">
         <h3>La Popote des Îles</h3>
         <img src="https://i.ibb.co/7JyRDXJv/flyer-new.png" alt="La Popote des Îles">
       </div>
 
+      <!-- Carte 2 -->
       <div class="card">
         <h3>Viana Hairbody</h3>
         <p>Des produits de beauté naturels, huiles essentielles et soins cosmétiques.</p>
         <img src="https://i.ibb.co/MkRpvJGS/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Viana Hairbody">
       </div>
 
+      <!-- Carte 3 -->
       <div class="card">
         <h3>Evasion Nautique</h3>
         <p>Excursions touristiques en jet ski et location de matériel nautique.</p>
         <img src="https://i.postimg.cc/02hSrc9x/EVASION.png" alt="Flyer EVASION HD" style="max-width:350px; margin:15px auto;">
       </div>
 
+      <!-- Carte 4 -->
       <div class="card">
         <h3>Au Bouti Food</h3>
         <p>Savourez nos spécialités et plats gourmands, préparés avec passion.<br>
@@ -510,14 +452,16 @@
         <img src="https://i.ibb.co/5gqWfKpY/page-bokit.jpg" alt="Au Bouti Food">
       </div>
 
+      <!-- Carte 5 -->
       <div class="card">
         <h3>FastIdf - Taxi Moto sur Paris</h3>
-        <video controls preload="metadata" style="border: 1px solid var(--glass-border);">
+        <video controls preload="metadata" style="border: 1px solid rgba(212,175,55,0.25);">
           <source src="https://videotourl.com/videos/1789300238144-fdab23ac-c265-407c-930a-ecc010ef0980.mov" type="video/mp4">
           Votre navigateur ne supporte pas la lecture de cette vidéo.
         </video>
       </div>
 
+      <!-- Carte 6 -->
       <div class="card">
         <h3>Logo - PA ESSAYE SA</h3>
         <img src="https://i.ibb.co/kVdLD8q0/logo-premium.png" alt="Logo Premium PNG" style="max-width:350px; margin:15px auto;">
@@ -528,20 +472,18 @@
 
 </div>
 
-<!-- ABOUT ME GLASS -->
+<!-- ABOUT ME -->
 <section id="about-me" class="about-section">
   <div class="about-grid">
 
     <div class="about-left">
-      <img src="https://i.ibb.co/FLywgXTT/Chat-GPT-Image-13-sept-2026-10-46-39.png"
-           alt="Photo de Anthony"
-           class="avatar">
-
+  <img src="https://i.ibb.co/wZkwrG0J/Chat-GPT-Image-21-sept-2026-00-10-48.png" alt="Chat-GPT-Image-21-sept-2026-00-10-48" border="0"></a>
+       
       <h2>Anthony</h2>
       <p class="subtitle">Développeur Web & Designer</p>
 
       <div class="contact-info">
-        <p>📍 Dijon, France</p>
+        <p>📍 IDF</p>
         <p>📧 elisabethanthony@hotmail.fr</p>
         <p> 07 87 15 57 32</p>
       </div>
@@ -578,49 +520,13 @@
         </div>
       </div>
     </div>
+<!-- SECTION EXEMPLES DE SITES -->
+<section id="exemples-sites" style="margin-top:100px; padding:80px 20px; background:#111114; border-top:1px solid rgba(212,175,55,0.25);">
+  <div class="container" style="max-width:1200px;">
 
-  </div>
-</section>
-
-<!-- EXEMPLES DE SITES GLASS -->
-<section id="exemples-sites" class="exemples-section">
-  <div class="container">
-
-    <h2>Exemples de sites que je peux créer</h2>
-    <p class="section-sub">Voici des modèles vierges que je peux personnaliser selon votre activité.</p>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>Restaurant Premium</h3>
-        <p>Page d'accueil moderne, menu élégant, réservation en ligne.</p>
-        <div class="zoom-container">
-          <img src="https://i.ibb.co/9H0m8fS/restaurant-preview.jpg" alt="Restaurant">
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Salon de Beauté</h3>
-        <p>Design épuré, avant/après, prise de rendez-vous.</p>
-        <div class="zoom-container">
-          <img src="https://i.ibb.co/4m0m0bS/beauty-preview.jpg" alt="Beauté">
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Boutique en ligne</h3>
-        <p>Produits, panier, paiement sécurisé.</p>
-        <div class="zoom-container">
-          <img src="https://i.ibb.co/fzy6sj0f/exemple-site-boutique.png" alt="Boutique">
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Entreprise / Corporate</h3>
-        <p>Présentation, services, équipe, contact.</p>
-        <div class="zoom-container">
-          <img src="https://i.ibb.co/5m0m8fS/corporate-preview.jpg" alt="Corporate">
-        </div>
+    <h2 style="color:var(--gold); text-align:center; font-size:32px; margin-bottom:16px;">
+      
+      
       </div>
 
     </div>
@@ -628,14 +534,17 @@
   </div>
 </section>
 
-<!-- CTA GLASS -->
+  </div>
+</section>
+
+<!-- CTA -->
 <section class="cta" id="contact">
-  <h2>Créons ensemble votre identité</h2>
+  <h2>Créons ensemble votre identité </h2>
   <div class="cta-buttons">
     <a href="mailto:elisabethanthony@hotmail.fr" class="cta-btn email">✉️ Envoyer un email</a>
     <a href="https://www.instagram.com/conceptartdesign2024?stkn=MWdjdzd4M2l1enh2dQ%3D%3D&utm_source=qr"
        target="_blank"
-       class="cta-btn"> Instagram • ConceptArtDesign</a>
+       class="cta-btn">📸 Instagram • ConceptArtDesign</a>
   </div>
 </section>
 

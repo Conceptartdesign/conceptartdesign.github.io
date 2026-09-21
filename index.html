@@ -20,11 +20,7 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Reset global pour enlever tout soulignement bleu */
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
     body {
       font-family: "Segoe UI", system-ui, sans-serif;
@@ -255,7 +251,6 @@
       margin-top: 40px;
     }
 
-    /* WhatsApp */
     .whatsapp-btn {
       position: fixed;
       bottom: 25px;
@@ -275,7 +270,6 @@
     .whatsapp-btn img { width: 35px; }
     .whatsapp-btn:hover { transform: scale(1.1); }
 
-    /* About Section */
     .about-section {
       margin-top: 100px;
       padding: 80px 20px;
@@ -343,7 +337,6 @@
       margin-bottom: 20px;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .hero {
         grid-template-columns: 1fr;
@@ -351,31 +344,12 @@
         text-align: center;
       }
 
-      .hero p {
-        margin: 0 auto 32px auto;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      nav a {
-        margin-left: 15px;
-        font-size: 13px;
-      }
-
-      .btn-outline {
-        margin-left: 15px;
-        padding: 8px 16px;
-      }
+      .hero p { margin: 0 auto 32px auto; }
+      .hero-buttons { justify-content: center; }
+      .hero h1 { font-size: 36px; }
+      .about-grid { grid-template-columns: 1fr; }
+      nav a { margin-left: 15px; font-size: 13px; }
+      .btn-outline { margin-left: 15px; padding: 8px 16px; }
     }
   </style>
 </head>
@@ -424,27 +398,23 @@
 
     <div class="cards">
 
-      <!-- Carte 1 -->
       <div class="card">
         <h3>La Popote des Îles</h3>
         <img src="https://i.ibb.co/7JyRDXJv/flyer-new.png" alt="La Popote des Îles">
       </div>
 
-      <!-- Carte 2 -->
       <div class="card">
         <h3>Viana Hairbody</h3>
         <p>Des produits de beauté naturels, huiles essentielles et soins cosmétiques.</p>
         <img src="https://i.ibb.co/MkRpvJGS/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Viana Hairbody">
       </div>
 
-      <!-- Carte 3 -->
       <div class="card">
         <h3>Evasion Nautique</h3>
         <p>Excursions touristiques en jet ski et location de matériel nautique.</p>
         <img src="https://i.postimg.cc/02hSrc9x/EVASION.png" alt="Flyer EVASION HD" style="max-width:350px; margin:15px auto;">
       </div>
 
-      <!-- Carte 4 -->
       <div class="card">
         <h3>Au Bouti Food</h3>
         <p>Savourez nos spécialités et plats gourmands, préparés avec passion.<br>
@@ -452,7 +422,6 @@
         <img src="https://i.ibb.co/5gqWfKpY/page-bokit.jpg" alt="Au Bouti Food">
       </div>
 
-      <!-- Carte 5 -->
       <div class="card">
         <h3>FastIdf - Taxi Moto sur Paris</h3>
         <video controls preload="metadata" style="border: 1px solid rgba(212,175,55,0.25);">
@@ -461,7 +430,6 @@
         </video>
       </div>
 
-      <!-- Carte 6 -->
       <div class="card">
         <h3>Logo - PA ESSAYE SA</h3>
         <img src="https://i.ibb.co/kVdLD8q0/logo-premium.png" alt="Logo Premium PNG" style="max-width:350px; margin:15px auto;">
@@ -477,7 +445,9 @@
   <div class="about-grid">
 
     <div class="about-left">
-  <img src="https://i.ibb.co/wZkwrG0J/Chat-GPT-Image-21-sept-2026-00-10-48.png" alt="Chat-GPT-Image-21-sept-2026-00-10-48" border="0"></a>
+      <img src="https://i.ibb.co/wZkwrG0J/Chat-GPT-Image-21-sept-2026-00-10-48.png" 
+           alt="Photo de Anthony" 
+           class="avatar">
        
       <h2>Anthony</h2>
       <p class="subtitle">Développeur Web & Designer</p>
@@ -520,26 +490,13 @@
         </div>
       </div>
     </div>
-<!-- SECTION EXEMPLES DE SITES -->
-<section id="exemples-sites" style="margin-top:100px; padding:80px 20px; background:#111114; border-top:1px solid rgba(212,175,55,0.25);">
-  <div class="container" style="max-width:1200px;">
-
-    <h2 style="color:var(--gold); text-align:center; font-size:32px; margin-bottom:16px;">
-      
-      
-      </div>
-
-    </div>
-
-  </div>
-</section>
 
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta" id="contact">
-  <h2>Créons ensemble votre identité </h2>
+  <h2>Créons ensemble votre identité</h2>
   <div class="cta-buttons">
     <a href="mailto:elisabethanthony@hotmail.fr" class="cta-btn email">✉️ Envoyer un email</a>
     <a href="https://www.instagram.com/conceptartdesign2024?stkn=MWdjdzd4M2l1enh2dQ%3D%3D&utm_source=qr"
@@ -550,7 +507,7 @@
 
 <!-- FOOTER -->
 <footer>
-  © 2026 — ConceptArtDesign
+  <p>© 2026 — ConceptArtDesign • Tous droits réservés</p>
 </footer>
 
 <!-- GSAP ANIMATIONS -->

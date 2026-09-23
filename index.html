@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome
+  <head>
   <meta charset="UTF-8">
   <title>ConceptDesign • Site Vitrine Luxe Animé</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -441,11 +442,13 @@
 </div>
 
 <!-- ABOUT ME -->
-<section id="about-me" class="about-section">
+      
+  <section id="about-me" class="about-section">
   <div class="about-grid">
 
     <div class="about-left">
-      <img src="https://i.ibb.co/wZkwrG0J/Chat-GPT-Image-21-sept-2026-00-10-48.png" 
+     <img src="https://i.ibb.co/wZkwrG0J/Chat-GPT-Image-21-sept-2026-00-10-48.png" 
+       
            alt="Photo de Anthony" 
            class="avatar">
        
@@ -466,33 +469,128 @@
         Mon objectif est d'offrir une identité visuelle forte, professionnelle et adaptée à chaque projet.
       </p>
 
-      <h3>Ce que je fais</h3>
-
-      <div class="cards">
-        <div class="card">
-          <h3>Développement Web</h3>
-          <p>Sites vitrines premium, intégration HTML/CSS, animations JS.</p>
-        </div>
-
-        <div class="card">
-          <h3>Design Graphique</h3>
-          <p>Flyers, logos, branding haut de gamme.</p>
-        </div>
-
-        <div class="card">
-          <h3>WordPress</h3>
-          <p>Création, optimisation et personnalisation de thèmes.</p>
-        </div>
-
-        <div class="card">
-          <h3>Responsive</h3>
-          <p>Adaptation parfaite mobile, tablette et desktop.</p>
-        </div>
+      <section class="services">
+  <h2 class="section-title">Mes services</h2>
+  
+  <div class="services-grid">
+    
+    <!-- Développement Web -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
       </div>
+      <h3>Développement Web</h3>
+      <p>Création de sites vitrines premium, intégration HTML/CSS, animations GSAP, optimisation des performances et design moderne.</p>
+    </div>
+
+    <!-- Design Graphique -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+          <path d="M2 2l7.586 7.586"></path>
+          <circle cx="11" cy="11" r="2"></circle>
+        </svg>
+      </div>
+      <h3>Design Graphique</h3>
+      <p>Création de flyers, logos, affiches, cartes de visite et identités visuelles haut de gamme.</p>
+    </div>
+
+    <!-- WordPress -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+          <path d="M2 12h20"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+      </div>
+      <h3>WordPress</h3>
+      <p>Création, personnalisation et optimisation de sites WordPress professionnels adaptés à votre activité.</p>
+    </div>
+
+    <!-- Responsive -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+          <line x1="12" y1="18" x2="12.01" y2="18"></line>
+        </svg>
+      </div>
+      <h3>Responsive</h3>
+      <p>Adaptation parfaite sur mobile, tablette et ordinateur pour une expérience fluide sur tous les écrans.</p>
     </div>
 
   </div>
 </section>
+
+<style>
+  .services {
+    background: #0d0d0d;
+    padding: 80px 40px;
+    color: #fff;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: #d4af37;
+    margin-bottom: 50px;
+    text-align: left;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: #1a1a1a;
+    border: 1px solid #d4af37;
+    border-radius: 16px;
+    padding: 40px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+  }
+
+  .service-icon {
+    color: #d4af37;
+    margin-bottom: 20px;
+  }
+
+  .service-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .service-card h3 {
+    font-size: 1.5rem;
+    color: #d4af37;
+    margin-bottom: 15px;
+  }
+
+  .service-card p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 
 <!-- CTA -->
 <section class="cta" id="contact">

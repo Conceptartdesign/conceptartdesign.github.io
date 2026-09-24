@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <title>ConceptDesign • Site Vitrine Luxe Animé</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+  <!-- SEO & Partage Réseaux Sociaux -->
+  <meta name="description" content="Anthony Elisabeth, Développeur Web & Designer Graphique. Création de sites vitrines premium, logos et identités visuelles sur mesure.">
+  <meta property="og:title" content="Anthony Elisabeth • ConceptDesign">
+  <meta property="og:description" content="Développeur Web & Designer Graphique. Découvrez mes réalisations et demandez votre devis gratuit.">
+  <meta property="og:image" content="https://i.ibb.co/wZkwrG0J/Chat-GPT-Image-21-sept-2026-00-10-48.png">
+  <meta property="og:url" content="https://conceptartdesign.github.io/">
 
   <!-- GSAP pour les animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -35,11 +42,16 @@
       padding: 0 20px;
     }
 
-    /* HEADER ÉPURÉ (Sans menu) */
-    header {
-      padding: 24px 0;
+    /* HEADER STICKY AVEC MENU */
+    header#main-header {
+      position: sticky;
+      top: 0;
+      background: rgba(11, 11, 13, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 20px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(212,175,55,0.25);
     }
@@ -51,6 +63,14 @@
       text-transform: uppercase;
       color: var(--gold);
     }
+
+    .desktop-nav a {
+      margin-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .desktop-nav a:hover { color: var(--gold); }
 
     .hero {
       padding: 60px 0;
@@ -165,7 +185,6 @@
       object-fit: cover;
     }
 
-    /* Image de taille moyenne pour logos */
     .card img.logo-medium {
       max-width: 200px;
       width: 100%;
@@ -243,7 +262,7 @@
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 300px 1fr;
+      grid-template-columns: 320px 1fr;
       gap: 50px;
       align-items: start;
     }
@@ -275,6 +294,52 @@
       color: var(--muted);
       font-size: 15px;
       margin-bottom: 8px;
+    }
+
+    /* APERÇU CV EN IMAGE */
+    .cv-preview-container {
+      margin-top: 25px;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cv-preview-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+    }
+
+    .cv-preview-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: pointer;
+    }
+
+    .cv-download-btn {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+      padding: 14px 20px;
+      background: var(--gold);
+      color: #0b0b0d;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cv-download-btn:hover {
+      background: #c9a33a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
     }
 
     .about-right h2 {
@@ -470,6 +535,13 @@
     @media (max-width: 768px) {
       .container { padding: 0 16px; }
       
+      header#main-header {
+        justify-content: center;
+        padding: 15px 16px;
+      }
+      
+      .desktop-nav { display: none; }
+      
       .hero {
         grid-template-columns: 1fr;
         padding: 40px 0;
@@ -542,9 +614,15 @@
 
 <div class="container">
 
-  <!-- HEADER ÉPURÉ -->
-  <header>
+  <!-- HEADER STICKY AVEC MENU -->
+  <header id="main-header">
     <div class="logo">ANTHONY • DEV</div>
+    <nav class="desktop-nav">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about-me">À propos</a>
+      <a href="#contact" class="btn-outline" style="padding: 8px 20px; font-size: 13px;">Devis Gratuit</a>
+    </nav>
   </header>
 
   <!-- HERO -->
@@ -607,7 +685,6 @@
         <img src="https://i.ibb.co/kVdLD8q0/logo-premium.png" alt="Logo Premium" loading="lazy">
       </div>
 
-      <!-- NOUVEAU PROJET CAVE DE LA MARINA -->
       <div class="card">
         <h3>Logo - Cave de la Marina</h3>
         <p>Identité visuelle pour cave à vin, design élégant mêlant univers maritime et œnologie.</p>
@@ -618,7 +695,7 @@
 
 </div>
 
-<!-- ABOUT ME -->
+<!-- ABOUT ME AVEC CV EN IMAGE -->
 <section id="about-me" class="about-section">
   <div class="about-grid">
 
@@ -630,10 +707,20 @@
       <p class="subtitle">Développeur Web & Designer</p>
 
       <div class="contact-info">
-        <p>📍 Île-de-France</p>
+        <p> Île-de-France</p>
         <p>📧 elisabethanthony@hotmail.fr</p>
-        <p> 07 87 15 57 32</p>
+        <p>📱 07 87 15 57 32</p>
       </div>
+      
+      <!-- APERÇU DU CV EN IMAGE -->
+      <a href="https://i.ibb.co/SD2SZHn7" target="_blank" class="cv-preview-container">
+        <img src="https://i.ibb.co/SD2SZHn7/cv-anthony.jpg" alt="CV Anthony Elisabeth - Aperçu" loading="lazy">
+      </a>
+      
+      <!-- BOUTON TÉLÉCHARGER CV -->
+      <a href="CV1.png" download class="cv-download-btn">
+        📄 Télécharger mon CV
+      </a>
     </div>
 
     <div class="about-right">
@@ -701,6 +788,24 @@
   </div>
 </section>
 
+<!-- SECTION TÉMOIGNAGES -->
+<section id="temoignages" style="padding: 60px 20px; background: #0d0d0d;">
+  <h2 style="color: var(--gold); text-align: center; margin-bottom: 40px;">Ce qu'ils disent de moi</h2>
+  <div class="cards" style="max-width: 1000px; margin: 0 auto;">
+    
+    <div class="card" style="text-align: center;">
+      <p style="font-style: italic; margin-bottom: 15px;">"Anthony a été très professionnel et à l'écoute. Le logo correspond parfaitement à l'image de notre cave."</p>
+      <h4 style="color: var(--gold); font-size: 16px;">- Client Cave de la Marina</h4>
+    </div>
+
+    <div class="card" style="text-align: center;">
+      <p style="font-style: italic; margin-bottom: 15px;">"Un travail sérieux, des délais respectés et un design moderne pour notre site web."</p>
+      <h4 style="color: var(--gold); font-size: 16px;">- ESAT HABILIS / Partenaires</h4>
+    </div>
+
+  </div>
+</section>
+
 <!-- FORMULAIRE DE CONTACT -->
 <section class="contact-form-section" id="contact">
   <div class="form-container">
@@ -727,7 +832,7 @@
       </div>
       
       <button type="submit" class="form-btn" id="submit-btn">
-        Envoyer ma demande ✉️
+        Envoyer ma demande ️
       </button>
       
       <p class="form-success" id="form-success">
@@ -805,7 +910,7 @@
   // Animations GSAP
   gsap.registerPlugin(ScrollTrigger);
   
-  gsap.from("header", { opacity: 0, duration: 1, y: -20, ease: "power3.out" });
+  gsap.from("header#main-header", { opacity: 0, duration: 1, y: -20, ease: "power3.out" });
   gsap.to(".hero h1", { opacity: 1, y: 0, duration: 1, ease: "power3.out" });
   gsap.to(".hero p", { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: "power3.out" });
   gsap.to(".hero .btn-primary, .hero .btn-secondary", { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power3.out" });

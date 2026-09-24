@@ -39,7 +39,7 @@
     header {
       padding: 24px 0;
       display: flex;
-      justify-content: center; /* Centré pour plus d'élégance */
+      justify-content: center;
       align-items: center;
       border-bottom: 1px solid rgba(212,175,55,0.25);
     }
@@ -163,6 +163,15 @@
       margin-top: 15px;
       display: block;
       object-fit: cover;
+    }
+
+    /* Image de taille moyenne pour logos */
+    .card img.logo-medium {
+      max-width: 200px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
     }
 
     .cta {
@@ -388,7 +397,7 @@
       border-radius: 12px;
       padding: 16px 20px;
       color: var(--text);
-      font-size: 16px; /* Empêche le zoom auto sur iOS */
+      font-size: 16px;
       font-family: inherit;
       transition: all 0.3s ease;
       outline: none;
@@ -457,9 +466,7 @@
       border: 1px solid rgba(239, 68, 68, 0.3);
     }
 
-    /* =========================================
-       RESPONSIVE MOBILE (Téléphones)
-       ========================================= */
+    /* RESPONSIVE MOBILE */
     @media (max-width: 768px) {
       .container { padding: 0 16px; }
       
@@ -535,7 +542,7 @@
 
 <div class="container">
 
-  <!-- HEADER ÉPURÉ (Menu supprimé) -->
+  <!-- HEADER ÉPURÉ -->
   <header>
     <div class="logo">ANTHONY • DEV</div>
   </header>
@@ -599,6 +606,13 @@
         <h3>Logo - PA ESSAYE SA</h3>
         <img src="https://i.ibb.co/kVdLD8q0/logo-premium.png" alt="Logo Premium" loading="lazy">
       </div>
+
+      <!-- NOUVEAU PROJET CAVE DE LA MARINA -->
+      <div class="card">
+        <h3>Logo - Cave de la Marina</h3>
+        <p>Identité visuelle pour cave à vin, design élégant mêlant univers maritime et œnologie.</p>
+        <img src="https://i.ibb.co/sp55M861/La-CAV.jpg" alt="Cave de la Marina" class="logo-medium" loading="lazy">
+      </div>
     </div>
   </section>
 
@@ -618,7 +632,7 @@
       <div class="contact-info">
         <p>📍 Île-de-France</p>
         <p>📧 elisabethanthony@hotmail.fr</p>
-        <p>📱 07 87 15 57 32</p>
+        <p> 07 87 15 57 32</p>
       </div>
     </div>
 

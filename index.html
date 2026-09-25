@@ -69,8 +69,13 @@
       color: var(--gold);
     }
 
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 25px; /* Espacement uniforme entre les liens */
+    }
+
     .desktop-nav a {
-      margin-left: 20px;
       color: var(--muted);
       font-size: 14px;
       transition: 0.3s;
@@ -396,12 +401,11 @@
 
   <div class="container">
 
-    <!-- HEADER STICKY AVEC MENU -->
+    <!-- HEADER STICKY AVEC MENU (Portfolio retiré) -->
     <header id="main-header">
       <div class="logo">ANTHONY • DEV</div>
       <nav class="desktop-nav">
         <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
         <a href="#about-me">À propos</a>
         <a href="#contact" class="btn-outline" style="padding: 8px 20px; font-size: 13px;">Devis Gratuit</a>
       </nav>
@@ -413,7 +417,7 @@
         <h1><span>Création de sites web</span><br>sur mesure & élégants</h1>
         <p>Des sites haut de gamme, minimalistes et conçus pour sublimer votre image de marque.</p>
         <div class="hero-buttons">
-          <a href="#portfolio" class="btn-primary">Mes réalisations</a>
+          <a href="#services" class="btn-primary">Mes services</a>
           <a href="#about-me" class="btn-secondary">À propos de moi</a>
         </div>
       </div>
@@ -423,7 +427,7 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
+    <!-- PORTFOLIO (Toujours présent sur la page, mais plus accessible via le menu) -->
     <section id="portfolio">
       <h2>Mes Réalisations</h2>
       <p class="section-sub">Sélection de projets récents</p>
@@ -449,7 +453,7 @@
           <img src="https://i.postimg.cc/02hSrc9x/EVASION.png" alt="Evasion Nautique" loading="lazy">
         </div>
 
-        <!-- Projet 4 : Au Bouti Food (Nettoyé et mis à jour) -->
+        <!-- Projet 4 : Au Bouti Food -->
         <div class="card">
           <h3>Au Bouti Food</h3>
           <p>« C'est la faim qui annonce l'heure ». Repas savoureux et généreux à Marie-Galante.</p>

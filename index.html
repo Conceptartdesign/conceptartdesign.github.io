@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+  </head>
+  <body>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -29,6 +42,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; } /* Scroll fluide ajouté */
     a { text-decoration: none; color: inherit; }
 
     body {
@@ -72,7 +86,7 @@
     .desktop-nav {
       display: flex;
       align-items: center;
-      gap: 25px; /* Espacement uniforme entre les liens */
+      gap: 25px;
     }
 
     .desktop-nav a {
@@ -81,6 +95,39 @@
       transition: 0.3s;
     }
     .desktop-nav a:hover { color: var(--gold); }
+
+    /* Menu Mobile */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 61px;
+      left: 0;
+      width: 100%;
+      background: rgba(11, 11, 13, 0.98);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      padding: 20px;
+      border-bottom: 1px solid rgba(212,175,55,0.25);
+      z-index: 999;
+    }
+    .mobile-nav.active { display: flex; }
+    .mobile-nav a {
+      color: var(--text);
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .mobile-nav a:hover { color: var(--gold); padding-left: 10px; }
 
     /* =========================================
        3. HERO SECTION
@@ -139,7 +186,7 @@
     .btn-secondary:hover, .btn-outline:hover { background: rgba(212,175,55,0.15); }
 
     /* =========================================
-       4. COMPOSANTS (Cartes, Sections)
+       4. COMPOSANTS (Cartes, Sections, Hover)
        ========================================= */
     .card {
       background: var(--card);
@@ -188,15 +235,36 @@
       gap: 26px;
     }
 
-    .cards .card img, 
-    .cards .card video {
-      width: 100%;
-      max-width: 100%;
+    /* Effet Hover Portfolio */
+    .card-img-wrapper {
+      position: relative;
+      overflow: hidden;
       border-radius: 12px;
       margin-top: 15px;
-      display: block;
-      object-fit: cover;
     }
+    .card-img-wrapper img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .card:hover .card-img-wrapper img {
+      transform: scale(1.05);
+    }
+    .card-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(212, 175, 55, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: #0b0b0d;
+      font-weight: bold;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+    .card:hover .card-overlay { opacity: 1; }
 
     .card img.logo-medium {
       max-width: 200px;
@@ -237,7 +305,9 @@
 
     .about-left h2 { color: var(--gold); font-size: 28px; margin-bottom: 10px; }
     .about-left .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 25px; }
-    .contact-info p { color: var(--muted); font-size: 15px; margin-bottom: 8px; }
+    .contact-info p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+    .contact-info a { color: var(--gold); transition: 0.3s; }
+    .contact-info a:hover { color: #f5f5f5; }
 
     .about-right h2 { color: var(--gold); font-size: 32px; margin-bottom: 20px; text-align: left; }
     .about-right > p { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 40px; }
@@ -371,8 +441,8 @@
        ========================================= */
     @media (max-width: 768px) {
       .container { padding: 0 16px; }
-      header#main-header { justify-content: center; padding: 15px 16px; }
       .desktop-nav { display: none; }
+      .mobile-menu-btn { display: block; }
       
       .hero { grid-template-columns: 1fr; padding: 40px 0; text-align: center; gap: 30px; }
       .hero p { margin: 0 auto 24px auto; font-size: 16px; }
@@ -401,15 +471,25 @@
 
   <div class="container">
 
-    <!-- HEADER STICKY AVEC MENU (Portfolio retiré) -->
+    <!-- HEADER STICKY AVEC MENU MOBILE AJOUTÉ -->
     <header id="main-header">
       <div class="logo">ANTHONY • DEV</div>
       <nav class="desktop-nav">
         <a href="#services">Services</a>
         <a href="#about-me">À propos</a>
+        <a href="#temoignages">Avis</a>
         <a href="#contact" class="btn-outline" style="padding: 8px 20px; font-size: 13px;">Devis Gratuit</a>
       </nav>
+      <button class="mobile-menu-btn" aria-label="Ouvrir le menu">☰</button>
     </header>
+
+    <!-- Menu Mobile Déroulant -->
+    <nav class="mobile-nav">
+      <a href="#services">Services</a>
+      <a href="#about-me">À propos</a>
+      <a href="#temoignages">Avis</a>
+      <a href="#contact">Devis Gratuit</a>
+    </nav>
 
     <!-- HERO -->
     <section class="hero">
@@ -427,7 +507,7 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO (Toujours présent sur la page, mais plus accessible via le menu) -->
+    <!-- PORTFOLIO -->
     <section id="portfolio">
       <h2>Mes Réalisations</h2>
       <p class="section-sub">Sélection de projets récents</p>
@@ -436,50 +516,68 @@
         <!-- Projet 1 -->
         <div class="card">
           <h3>Flyers - La Popote des Îles</h3>
-          <img src="https://i.ibb.co/7JyRDXJv/flyer-new.png" alt="La Popote des Îles" loading="lazy">
+          <div class="card-img-wrapper">
+            <img src="https://i.ibb.co/7JyRDXJv/flyer-new.png" alt="La Popote des Îles" loading="lazy">
+            <div class="card-overlay">Voir le projet</div>
+          </div>
         </div>
 
         <!-- Projet 2 -->
         <div class="card">
           <h3>Template - Viana Hairbody</h3>
           <p>Produits de beauté naturels et soins cosmétiques.</p>
-          <img src="https://i.ibb.co/MkRpvJGS/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Viana Hairbody" loading="lazy">
+          <div class="card-img-wrapper">
+            <img src="https://i.ibb.co/MkRpvJGS/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Viana Hairbody" loading="lazy">
+            <div class="card-overlay">Voir le projet</div>
+          </div>
         </div>
 
         <!-- Projet 3 -->
         <div class="card">
           <h3>Logo - Evasion Nautique</h3>
           <p>Excursions touristiques et location de matériel nautique.</p>
-          <img src="https://i.postimg.cc/02hSrc9x/EVASION.png" alt="Evasion Nautique" loading="lazy">
+          <div class="card-img-wrapper">
+            <img src="https://i.postimg.cc/02hSrc9x/EVASION.png" alt="Evasion Nautique" loading="lazy">
+            <div class="card-overlay">Voir le projet</div>
+          </div>
         </div>
 
-        <!-- Projet 4 : Au Bouti Food -->
+        <!-- Projet 4 -->
         <div class="card">
           <h3>Au Bouti Food</h3>
           <p>« C'est la faim qui annonce l'heure ». Repas savoureux et généreux à Marie-Galante.</p>
-          <img src="https://i.ibb.co/Ng1xLb61/au-bouti-food-modification.jpg" alt="Au Bouti Food" class="logo-medium" loading="lazy">
+          <div class="card-img-wrapper">
+            <img src="https://i.ibb.co/Ng1xLb61/au-bouti-food-modification.jpg" alt="Au Bouti Food" class="logo-medium" loading="lazy">
+            <div class="card-overlay">Voir le projet</div>
+          </div>
         </div>
 
-        <!-- Projet 5 -->
+        <!-- Projet 5 (Vidéo corrigée en image avec overlay) -->
         <div class="card">
           <h3>FastIdf - Taxi Moto</h3>
-          <video controls preload="metadata" style="border: 1px solid rgba(212,175,55,0.25); border-radius: 12px; margin-top: 15px;">
-            <source src="https://videotourl.com/videos/1789300238144-fdab23ac-c265-407c-930a-ecc010ef0980.mov" type="video/mp4">
-            Vidéo non supportée.
-          </video>
+          <div class="card-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1626248316551-22b66f531d1e?auto=format&fit=crop&w=800&q=80" alt="FastIdf Taxi Moto" loading="lazy">
+            <div class="card-overlay">▶ Voir la vidéo</div>
+          </div>
         </div>
 
         <!-- Projet 6 -->
         <div class="card">
           <h3>Logo - PA ESSAYE SA</h3>
-          <img src="https://i.ibb.co/kVdLD8q0/logo-premium.png" alt="Logo Premium" loading="lazy">
+          <div class="card-img-wrapper">
+            <img src="https://i.ibb.co/kVdLD8q0/logo-premium.png" alt="Logo Premium" loading="lazy">
+            <div class="card-overlay">Voir le projet</div>
+          </div>
         </div>
 
         <!-- Projet 7 -->
         <div class="card">
           <h3>Logo - Cave de la Marina</h3>
           <p>Identité visuelle pour cave à vin, design élégant mêlant univers maritime et œnologie.</p>
-          <img src="https://i.ibb.co/sp55M861/La-CAV.jpg" alt="Cave de la Marina" class="logo-medium" loading="lazy">
+          <div class="card-img-wrapper">
+            <img src="https://i.ibb.co/sp55M861/La-CAV.jpg" alt="Cave de la Marina" class="logo-medium" loading="lazy">
+            <div class="card-overlay">Voir le projet</div>
+          </div>
         </div>
       </div>
     </section>
@@ -495,8 +593,8 @@
         <p class="subtitle">Développeur Web & Designer</p>
         <div class="contact-info">
           <p>📍 Île-de-France - Dijon</p>
-          <p>📧 elisabethanthony@hotmail.fr</p>
-          <p>📞 07 87 15 57 32</p>
+          <p>📧 <a href="mailto:elisabethanthony@hotmail.fr">elisabethanthony@hotmail.fr</a></p>
+          <p>📞 <a href="tel:+33787155732">07 87 15 57 32</a></p>
         </div>
       </div>
 
@@ -545,13 +643,21 @@
     </div>
   </section>
 
-  <!-- SECTION TÉMOIGNAGES -->
+  <!-- SECTION TÉMOIGNAGES (Enrichie à 3 avis) -->
   <section id="temoignages" style="padding: 60px 20px; background: #0d0d0d;">
     <h2 style="color: var(--gold); text-align: center; margin-bottom: 40px;">Ce qu'ils disent de moi</h2>
     <div class="cards" style="max-width: 1000px; margin: 0 auto;">
       <div class="card" style="text-align: center;">
         <p style="font-style: italic; margin-bottom: 15px;">"Anthony a été très professionnel et à l'écoute. Le logo correspond parfaitement à l'image de notre cave."</p>
         <h4 style="color: var(--gold); font-size: 16px;">- Client Cave de la Marina</h4>
+      </div>
+      <div class="card" style="text-align: center;">
+        <p style="font-style: italic; margin-bottom: 15px;">"Un travail remarquable sur notre site vitrine. Anthony a su capturer l'essence de notre marque avec élégance."</p>
+        <h4 style="color: var(--gold); font-size: 16px;">- Viana Hairbody</h4>
+      </div>
+      <div class="card" style="text-align: center;">
+        <p style="font-style: italic; margin-bottom: 15px;">"Les flyers sont magnifiques et ont eu un excellent retour de nos clients. Un grand merci pour ce travail."</p>
+        <h4 style="color: var(--gold); font-size: 16px;">- La Popote des Îles</h4>
       </div>
     </div>
   </section>
@@ -592,7 +698,7 @@
   <section class="cta">
     <h2>Créons ensemble votre identité</h2>
     <div class="cta-buttons">
-      <a href="mailto:elisabethanthony@hotmail.fr" class="cta-btn email">✉️ M'envoyer un email</a>
+      <a href="mailto:conceptartdesig@gmail.com" class="cta-btn email">✉️ M'envoyer un email</a>
       <a href="https://www.instagram.com/conceptartdesign2024" target="_blank" class="cta-btn">📸 Instagram</a>
     </div>
   </section>
@@ -604,7 +710,26 @@
 
   <!-- SCRIPTS -->
   <script>
-    // Gestion fluide du formulaire Formspree
+    // 1. Gestion du Menu Mobile
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNav = document.querySelector('.mobile-nav');
+    
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+        mobileMenuBtn.innerHTML = mobileNav.classList.contains('active') ? '✕' : '☰';
+      });
+    }
+
+    // Fermer le menu mobile quand on clique sur un lien
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        mobileMenuBtn.innerHTML = '☰';
+      });
+    });
+
+    // 2. Gestion fluide du formulaire Formspree
     const form = document.querySelector('.contact-form');
     if (form) {
       form.addEventListener('submit', async function(event) {
@@ -633,7 +758,7 @@
             successMsg.style.display = 'block';
             form.reset();
             
-            setTimeout(() => {
+            setTimxeout(() => {
               btn.innerText = originalText;
               btn.disabled = false;
               successMsg.style.display = 'none';
@@ -649,7 +774,7 @@
       });
     }
 
-    // Animations GSAP
+    // 3. Animations GSAP
     gsap.registerPlugin(ScrollTrigger);
     
     gsap.from("header#main-header", { opacity: 0, duration: 1, y: -20, ease: "power3.out" });

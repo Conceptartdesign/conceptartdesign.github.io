@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anthony | Concepteur Web & UI/UX</title>
+<title>Anthony Elisabeth | Concepteur Web & UI/UX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -180,7 +180,7 @@
     border-radius: 20px; overflow: hidden; transition: all 0.4s;
   }
   .project:hover { transform: translateY(-5px); border-color: rgba(217, 70, 239, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-  .project-img {
+  .project-img, .project-video {
     height: 280px;
     overflow: hidden;
     position: relative;
@@ -197,6 +197,14 @@
     transition: transform 0.5s;
   }
   .project:hover .project-img img { transform: scale(1.1); }
+  
+  /* Video Wrapper */
+  .project-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
   .project-info { padding: 28px; }
   .project-info h3 { font-size: 1.3rem; margin-bottom: 8px; }
   .project-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
@@ -218,7 +226,7 @@
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     background: #000;
   }
-  .video-wrapper iframe, .video-wrapper video {
+  .video-wrapper iframe {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
@@ -378,7 +386,7 @@
     </div>
     <div class="video-wrapper">
       <iframe 
-        src=https://www.image2url.com/r2/default/videos/1790564322767-1d48385d-7ab2-4ce4-9d3d-7e92b539f3b5.mp4 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" 
         title="Portfolio Vidéo Anthony Elisabeth" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>
@@ -395,14 +403,14 @@
     </div>
     <div class="portfolio-grid">
       
-      <!-- Projet 1 -->
+      <!-- Projet 1: Viana Hairbody -->
       <div class="project">
         <div class="project-img">
           <img src="https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Site Viana Hairbody">
         </div>
         <div class="project-info">
           <h3>Viana Hairbody</h3>
-          <p>Site e-commerce pour une marque de soins naturels. Design élégant mettant en avant les ingrédients 100% naturels et la fabrication artisanale.</p>
+          <p>Site e-commerce pour une marque de soins naturels. Design élégant mettant en avant les ingrédients 100% naturels.</p>
           <div class="tags">
             <span class="tag-sm">WordPress</span>
             <span class="tag-sm">E-commerce</span>
@@ -411,14 +419,14 @@
         </div>
       </div>
 
-      <!-- Projet 2 -->
+      <!-- Projet 2: Au Bouti Food -->
       <div class="project">
         <div class="project-img">
           <img src="https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg" alt="Flyer Au Bouti Food">
         </div>
         <div class="project-info">
           <h3>Au Bouti Food</h3>
-          <p>Identité visuelle et supports de communication pour un restaurant de grillades. Création de flyers et menus avec une ambiance chaleureuse.</p>
+          <p>Identité visuelle et supports de communication pour un restaurant de grillades. Flyers et menus.</p>
           <div class="tags">
             <span class="tag-sm">Photoshop</span>
             <span class="tag-sm">Illustrator</span>
@@ -427,14 +435,14 @@
         </div>
       </div>
 
-      <!-- Projet 3 -->
+      <!-- Projet 3: La Papote des Iles -->
       <div class="project">
         <div class="project-img">
           <img src="https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png" alt="Flyer La Papote des Iles">
         </div>
         <div class="project-info">
           <h3>La Papote des Iles</h3>
-          <p>Support de communication pour un restaurant de cuisine antillaise. Design coloré mettant en valeur les plats et le service de livraison.</p>
+          <p>Support de communication pour un restaurant de cuisine antillaise. Design coloré et appétissant.</p>
           <div class="tags">
             <span class="tag-sm">Photoshop</span>
             <span class="tag-sm">Design</span>
@@ -443,14 +451,17 @@
         </div>
       </div>
 
-      <!-- NOUVEAU PROJET 4 : FastIdf -->
+      <!-- Projet 4: FastIdf - Taxi Moto (AVEC VIDEO) -->
       <div class="project">
-        <div class="project-img">
-          <img src="https://i.ibb.co/q3gLGdj0/Capture-d-e-cran-2026-09-28-a-04-39-27.png" alt="Projet FastIdf Taxi Moto">
+        <div class="project-video">
+          <video controls poster="https://images.unsplash.com/photo-1626248316551-22b66f531d1e?auto=format&fit=crop&w=800&q=80">
+            <source src="https://www.image2url.com/r2/default/videos/1790564322767-1d48385d-7ab2-4ce4-9d3d-7e92b539f3b5.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture vidéo.
+          </video>
         </div>
         <div class="project-info">
-          <h3>Célio - Redesign E-commerce</h3>
-          <p>Maquette UI/UX complète pour le redesign du site e-commerce Célio. Refonte de l'interface avec mise en avant des promotions (-60%), amélioration de l'expérience utilisateur et optimisation du parcours d'achat. Design moderne avec sections actu, collections et newsletter intégrées.</p>
+          <h3>FastIdf - Taxi Moto</h3>
+          <p>Conception d'une interface moderne pour un service de transport rapide en Île-de-France. Design jaune/noir impactant.</p>
           <div class="tags">
             <span class="tag-sm">WordPress</span>
             <span class="tag-sm">UI/UX</span>

@@ -1,798 +1,503 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pen</title>
-  </head>
-  <body>
-
-    <script src="./script.js"></script>
-  </body>
-</html>
-<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>ConceptDesign • Site Vitrine Luxe Animé</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthony | Concepteur Web & UI/UX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+    --primary: #3b82f6;
+    --accent: #d946ef;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
   
-  <!-- SEO & Partage Réseaux Sociaux -->
-  <meta name="description" content="Anthony Elisabeth, Développeur Web & Designer Graphique. Création de sites vitrines premium, logos et identités visuelles sur mesure.">
-  <meta property="og:title" content="Anthony Elisabeth • ConceptDesign">
-  <meta property="og:description" content="Développeur Web & Designer Graphique. Découvrez mes réalisations et demandez votre devis gratuit.">
-  <meta property="og:image" content="https://i.ibb.co/wZkwrG0J/Chat-GPT-Image-21-sept-2026-00-10-48.png">
-  <meta property="og:url" content="https://conceptartdesign.github.io/">
+  .bg-gradient {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+      radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.12), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(217, 70, 239, 0.12), transparent 25%);
+    z-index: -1;
+    animation: gradientMove 15s ease infinite;
+  }
+  @keyframes gradientMove {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, -20px) scale(1.1); }
+  }
 
-  <!-- GSAP pour les animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-  <style>
-    /* =========================================
-       1. VARIABLES & RESET
-       ========================================= */
-    :root {
-      --bg: #0b0b0d;
-      --card: #141418;
-      --gold: #d4af37;
-      --text: #f5f5f5;
-      --muted: #b3b3b3;
-    }
+  nav {
+    position: fixed; top: 0; width: 100%;
+    padding: 20px 0; z-index: 100;
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: 'Outfit'; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
+  .logo span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.3s; position: relative; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -5px; left: 0;
+    width: 0; height: 2px; background: linear-gradient(135deg, var(--primary), var(--accent));
+    transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; } /* Scroll fluide ajouté */
-    a { text-decoration: none; color: inherit; }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
+  .tag {
+    display: inline-block; padding: 6px 16px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 50px; font-size: 0.85rem; color: var(--primary);
+    margin-bottom: 24px;
+    animation: fadeInDown 1s ease;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; font-weight: 800;
+    margin-bottom: 24px; letter-spacing: -1.5px;
+  }
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradientText 3s linear infinite;
+  }
+  @keyframes gradientText {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+  .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 500px; animation: fadeInUp 1s ease 0.3s both; }
+  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeInUp 1s ease 0.6s both; }
+  .btn {
+    padding: 14px 32px; border-radius: 50px; font-weight: 600;
+    text-decoration: none; transition: all 0.3s; font-size: 0.95rem;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4); }
+  .btn-secondary {
+    background: var(--surface); color: var(--text); border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
 
-    body {
-      font-family: "Segoe UI", system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+  .hero-visual {
+    aspect-ratio: 1; border-radius: 30px;
+    background-image: url('https://images.unsplash.com/photo-1626248316551-22b66f531d1e?auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    animation: float 6s ease-in-out infinite;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  .hero-visual::before {
+    content: '</>'; font-family: monospace; font-size: 8rem; font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    opacity: 0.8;
+    text-shadow: 0 0 30px rgba(0,0,0,0.5);
+  }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+  section { padding: 100px 0; }
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .section-header p { color: var(--text-muted); font-size: 1.1rem; }
 
-    /* =========================================
-       2. HEADER & NAVIGATION
-       ========================================= */
-    header#main-header {
-      position: sticky;
-      top: 0;
-      background: rgba(11, 11, 13, 0.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(212,175,55,0.25);
-    }
+  .profil-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 30px; padding: 50px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+    transition: transform 0.3s;
+  }
+  .profil-box:hover { transform: translateY(-5px); }
+  .profil-text h3 { font-size: 1.8rem; margin-bottom: 20px; }
+  .profil-text p { color: var(--text-muted); margin-bottom: 15px; font-size: 1.05rem; }
+  .profil-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stat-card {
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+    border-radius: 20px; padding: 25px; text-align: center;
+    transition: all 0.3s;
+  }
+  .stat-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+  .stat-card .icon { font-size: 2rem; margin-bottom: 10px; }
+  .stat-card h4 { font-size: 1rem; margin-bottom: 5px; }
+  .stat-card p { font-size: 0.85rem; color: var(--text-muted); }
 
-    .logo {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px; transition: all 0.4s;
+  }
+  .card:hover {
+    transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+  .card-icon {
+    width: 50px; height: 50px; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(217,70,239,0.2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 20px;
+    transition: transform 0.3s;
+  }
+  .card:hover .card-icon { transform: rotate(360deg) scale(1.1); }
+  .card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+  .card p { color: var(--text-muted); font-size: 0.95rem; }
 
-    .desktop-nav {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+  .project {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; overflow: hidden; transition: all 0.4s;
+  }
+  .project:hover { transform: translateY(-5px); border-color: rgba(217, 70, 239, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .project-img {
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+  }
+  .project-img::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(217,70,239,0.2));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .project:hover .project-img::after { opacity: 1; }
+  .project-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .project:hover .project-img img { transform: scale(1.1); }
+  .project-info { padding: 28px; }
+  .project-info h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .project-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag-sm {
+    padding: 4px 12px; background: rgba(255,255,255,0.05);
+    border-radius: 20px; font-size: 0.75rem; color: var(--text-muted);
+    transition: all 0.3s;
+  }
+  .tag-sm:hover { background: var(--primary); color: white; }
 
-    .desktop-nav a {
-      color: var(--muted);
-      font-size: 14px;
-      transition: 0.3s;
-    }
-    .desktop-nav a:hover { color: var(--gold); }
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    background: #000;
+  }
+  .video-wrapper iframe, .video-wrapper video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
 
-    /* Menu Mobile */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--gold);
-      font-size: 28px;
-      cursor: pointer;
-    }
+  .contact-box {
+    background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(217,70,239,0.1));
+    border: 1px solid var(--border); border-radius: 30px;
+    padding: 60px; text-align: center;
+    transition: transform 0.3s;
+  }
+  .contact-box:hover { transform: translateY(-5px); }
+  .contact-box h2 { font-size: 2.5rem; margin-bottom: 16px; }
+  .contact-box p { color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem; }
+  .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+  .contact-link {
+    padding: 12px 24px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 50px; color: var(--text); text-decoration: none;
+    transition: all 0.3s; font-size: 0.95rem;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); transform: translateY(-2px); }
 
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 61px;
-      left: 0;
-      width: 100%;
-      background: rgba(11, 11, 13, 0.98);
-      backdrop-filter: blur(10px);
-      flex-direction: column;
-      padding: 20px;
-      border-bottom: 1px solid rgba(212,175,55,0.25);
-      z-index: 999;
-    }
-    .mobile-nav.active { display: flex; }
-    .mobile-nav a {
-      color: var(--text);
-      padding: 15px 0;
-      border-bottom: 1px solid rgba(212,175,55,0.1);
-      font-size: 16px;
-      transition: 0.3s;
-    }
-    .mobile-nav a:hover { color: var(--gold); padding-left: 10px; }
+  footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); }
 
-    /* =========================================
-       3. HERO SECTION
-       ========================================= */
-    .hero {
-      padding: 60px 0;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.1;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-    .hero h1 span { color: var(--gold); }
-
-    .hero p {
-      font-size: 18px;
-      color: var(--muted);
-      margin-bottom: 32px;
-      max-width: 480px;
-      line-height: 1.6;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary, .btn-secondary, .btn-outline {
-      padding: 14px 28px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 15px;
-      transition: 0.3s;
-      display: inline-block;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .btn-primary { background: var(--gold); color: #0b0b0d; }
-    .btn-primary:hover { background: #c9a33a; }
-
-    .btn-secondary, .btn-outline {
-      background: transparent;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-    }
-    .btn-secondary:hover, .btn-outline:hover { background: rgba(212,175,55,0.15); }
-
-    /* =========================================
-       4. COMPOSANTS (Cartes, Sections, Hover)
-       ========================================= */
-    .card {
-      background: var(--card);
-      padding: 28px;
-      border-radius: 20px;
-      border: 1px solid rgba(212,175,55,0.25);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: var(--gold);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-      color: var(--gold);
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    section { margin-top: 60px; }
-
-    section h2 {
-      font-size: clamp(28px, 4vw, 32px);
-      margin-bottom: 16px;
-      color: var(--gold);
-      text-align: center;
-    }
-
-    .section-sub {
-      text-align: center;
-      color: var(--muted);
-      margin-bottom: 40px;
-      font-size: 16px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 26px;
-    }
-
-    /* Effet Hover Portfolio */
-    .card-img-wrapper {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      margin-top: 15px;
-    }
-    .card-img-wrapper img {
-      width: 100%;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .card:hover .card-img-wrapper img {
-      transform: scale(1.05);
-    }
-    .card-overlay {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(212, 175, 55, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      color: #0b0b0d;
-      font-weight: bold;
-      font-size: 16px;
-      letter-spacing: 1px;
-    }
-    .card:hover .card-overlay { opacity: 1; }
-
-    .card img.logo-medium {
-      max-width: 200px;
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 15px auto;
-    }
-
-    /* =========================================
-       5. ABOUT & SERVICES
-       ========================================= */
-    .about-section {
-      padding: 60px 20px;
-      background: #111114;
-      border-top: 1px solid rgba(212,175,55,0.25);
-    }
-
-    .about-grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 50px;
-      align-items: start;
-    }
-
-    .about-left { text-align: center; }
-
-    .avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 3px solid var(--gold);
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
-
-    .about-left h2 { color: var(--gold); font-size: 28px; margin-bottom: 10px; }
-    .about-left .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 25px; }
-    .contact-info p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
-    .contact-info a { color: var(--gold); transition: 0.3s; }
-    .contact-info a:hover { color: #f5f5f5; }
-
-    .about-right h2 { color: var(--gold); font-size: 32px; margin-bottom: 20px; text-align: left; }
-    .about-right > p { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 40px; }
-
-    .services {
-      background: #0d0d0d;
-      padding: 40px 30px;
-      color: #fff;
-      border-radius: 16px;
-      border: 1px solid rgba(212,175,55,0.15);
-    }
-
-    .services h2 { text-align: left; font-size: clamp(24px, 4vw, 32px); margin-bottom: 30px; }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .service-card {
-      background: var(--card);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 16px;
-      padding: 30px 25px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
-      border-color: var(--gold);
-    }
-
-    .service-icon { color: var(--gold); margin-bottom: 20px; }
-    .service-icon svg { width: 40px; height: 40px; }
-    .service-card h3 { font-size: 1.25rem; color: var(--gold); margin-bottom: 12px; }
-    .service-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
-
-    /* =========================================
-       6. FORMULAIRE DE CONTACT
-       ========================================= */
-    .contact-form-section {
-      background: #111114;
-      padding: clamp(60px, 8vw, 100px) 20px;
-      border-top: 1px solid rgba(212, 175, 55, 0.25);
-    }
-
-    .form-container { max-width: 700px; margin: 0 auto; width: 100%; }
-    .form-title { color: var(--gold); font-size: clamp(28px, 5vw, 36px); text-align: center; margin-bottom: 10px; line-height: 1.2; }
-    .form-subtitle { color: var(--muted); text-align: center; font-size: 16px; margin-bottom: 40px; }
-
-    .contact-form { display: flex; flex-direction: column; gap: 20px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .input-group { width: 100%; }
-
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      background: var(--card);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 12px;
-      padding: 16px 20px;
-      color: var(--text);
-      font-size: 16px;
-      font-family: inherit;
-      transition: all 0.3s ease;
-      outline: none;
-      -webkit-appearance: none;
-    }
-
-    .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--muted); opacity: 0.7; }
-    .contact-form input:focus, .contact-form textarea:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
-      background: #1a1a1e;
-    }
-    .contact-form textarea { resize: vertical; min-height: 140px; }
-
-    .form-btn {
-      width: 100%;
-      font-size: 16px;
-      padding: 18px 32px;
-      margin-top: 10px;
-      cursor: pointer;
-      border: none;
-      border-radius: 999px;
-      background: var(--gold);
-      color: #0b0b0d;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-    }
-
-    .form-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); background: #c9a33a; }
-    .form-btn:active { transform: translateY(0); }
-    .form-btn:disabled { opacity: 0.7; cursor: not-allowed; }
-
-    .form-success, .form-error {
-      display: none; text-align: center; font-size: 15px; padding: 15px; border-radius: 12px; margin-top: 10px;
-    }
-    .form-success { color: #4ade80; background: rgba(74, 222, 128, 0.1); border: 1px solid rgba(74, 222, 128, 0.3); }
-    .form-error { color: #ef4444; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); }
-
-    /* =========================================
-       7. FOOTER & CTA
-       ========================================= */
-    .cta { text-align: center; padding: 60px 20px; background: #111114; border-top: 1px solid rgba(212,175,55,0.25); }
-    .cta h2 { color: var(--gold); margin-bottom: 30px; }
-    .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-    .cta-btn {
-      display: inline-block; padding: 14px 28px; border-radius: 999px; border: 1px solid var(--gold);
-      color: var(--gold); font-size: 15px; font-weight: 600; transition: 0.3s;
-    }
-    .cta-btn:hover { background: rgba(212,175,55,0.15); }
-    .cta-btn.email { background: var(--gold); color: #0b0b0d; }
-    .cta-btn.email:hover { background: #c9a33a; }
-
-    footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; border-top: 1px solid rgba(212,175,55,0.25); }
-
-    .whatsapp-btn {
-      position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px;
-      background: #25D366; border-radius: 50%; display: flex; justify-content: center;
-      align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 9999; transition: 0.2s;
-    }
-    .whatsapp-btn img { width: 35px; }
-    .whatsapp-btn:hover { transform: scale(1.1); }
-
-    /* =========================================
-       8. RESPONSIVE MOBILE
-       ========================================= */
-    @media (max-width: 768px) {
-      .container { padding: 0 16px; }
-      .desktop-nav { display: none; }
-      .mobile-menu-btn { display: block; }
-      
-      .hero { grid-template-columns: 1fr; padding: 40px 0; text-align: center; gap: 30px; }
-      .hero p { margin: 0 auto 24px auto; font-size: 16px; }
-      .hero-buttons { flex-direction: column; width: 100%; }
-      .btn-primary, .btn-secondary { width: 100%; }
-      
-      .about-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-      .about-right h2, .services h2 { text-align: center; }
-      .services { padding: 30px 20px; }
-      .services-grid { grid-template-columns: 1fr; gap: 16px; }
-      .service-card { padding: 25px 20px; }
-      .form-row { grid-template-columns: 1fr; gap: 20px; }
-      
-      .whatsapp-btn { width: 55px; height: 55px; bottom: 20px; right: 20px; }
-      .whatsapp-btn img { width: 30px; }
-    }
-  </style>
+  @media (max-width: 768px) {
+    .hero-grid, .profil-box { grid-template-columns: 1fr; text-align: center; }
+    .hero p { margin: 0 auto 40px; }
+    .btn-group { justify-content: center; }
+    .nav-links { display: none; }
+    .contact-box { padding: 40px 20px; }
+    section { padding: 80px 0; }
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- WhatsApp Flottant -->
-  <a href="https://wa.me/33787155732" class="whatsapp-btn" target="_blank" aria-label="Contact WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
+<div class="bg-gradient"></div>
 
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">Anthony<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#video">Vidéo</a></li>
+      <li><a href="#portfolio">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">Disponible pour vos projets</span>
+      <h1>Concepteur Web & <br><span class="gradient">Designer UI/UX</span></h1>
+      <p>Je transforme vos idées en sites web modernes. Spécialisé WordPress, Elementor et Shopify, j'allie créativité et rigueur technique.</p>
+      <div class="btn-group">
+        <a href="#portfolio" class="btn btn-primary">Voir mes projets</a>
+        <a href="tel:0787155732" class="btn btn-secondary">📞 M'appeler</a>
+      </div>
+    </div>
+    <div class="hero-visual"></div>
+  </div>
+</section>
+
+<section id="profil" class="reveal">
   <div class="container">
-
-    <!-- HEADER STICKY AVEC MENU MOBILE AJOUTÉ -->
-    <header id="main-header">
-      <div class="logo">ANTHONY • DEV</div>
-      <nav class="desktop-nav">
-        <a href="#services">Services</a>
-        <a href="#about-me">À propos</a>
-        <a href="#temoignages">Avis</a>
-        <a href="#contact" class="btn-outline" style="padding: 8px 20px; font-size: 13px;">Devis Gratuit</a>
-      </nav>
-      <button class="mobile-menu-btn" aria-label="Ouvrir le menu">☰</button>
-    </header>
-
-    <!-- Menu Mobile Déroulant -->
-    <nav class="mobile-nav">
-      <a href="#services">Services</a>
-      <a href="#about-me">À propos</a>
-      <a href="#temoignages">Avis</a>
-      <a href="#contact">Devis Gratuit</a>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <h1><span>Création de sites web</span><br>sur mesure & élégants</h1>
-        <p>Des sites haut de gamme, minimalistes et conçus pour sublimer votre image de marque.</p>
-        <div class="hero-buttons">
-          <a href="#services" class="btn-primary">Mes services</a>
-          <a href="#about-me" class="btn-secondary">À propos de moi</a>
+    <div class="section-header">
+      <h2>Mon Profil</h2>
+      <p>Passion, créativité et rigueur</p>
+    </div>
+    <div class="profil-box">
+      <div class="profil-text">
+        <h3>À propos de moi</h3>
+        <p>Passionné par l'univers créatif, je mets mon sens du détail et ma rigueur au service de vos projets digitaux.</p>
+        <p>Fort d'un background en prépresse et design graphique, je maîtrise la chaîne de création de la maquette (Figma, Adobe Suite) à l'intégration web (WordPress, Elementor, HTML/CSS).</p>
+        <p>Mon objectif : contribuer à des projets innovants et livrer des sites qui reflètent parfaitement votre identité.</p>
+      </div>
+      <div class="profil-stats">
+        <div class="stat-card">
+          <div class="icon">🎨</div>
+          <h4>Design</h4>
+          <p>Figma, Photoshop, Illustrator</p>
         </div>
+        <div class="stat-card">
+          <div class="icon">💻</div>
+          <h4>Web</h4>
+          <p>WordPress, Elementor, HTML/CSS</p>
+        </div>
+        <div class="stat-card">
+          <div class="icon">🛍️</div>
+          <h4>E-commerce</h4>
+          <p>Shopify, Liquid, UX</p>
+        </div>
+        <div class="stat-card">
+          <div class="icon">🏎️</div>
+          <h4>Passions</h4>
+          <p>Natation, Musculation, Karting</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="reveal">
+  <div class="container">
+    <div class="section-header">
+      <h2>Ce que je crée</h2>
+      <p>Des solutions digitales sur mesure</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Sites Vitrines</h3>
+        <p>Design sur mesure et intégration WordPress/Elementor pour une présence en ligne professionnelle.</p>
       </div>
       <div class="card">
-        <h3>ConceptDesignArt</h3>
-        <p>Spécialiste des univers premium, branding haut de gamme et interfaces élégantes.</p>
+        <div class="card-icon">🛍️</div>
+        <h3>Boutiques Shopify</h3>
+        <p>Création et personnalisation de boutiques e-commerce optimisées pour la conversion.</p>
       </div>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section id="portfolio">
-      <h2>Mes Réalisations</h2>
-      <p class="section-sub">Sélection de projets récents</p>
-
-      <div class="cards">
-        <!-- Projet 1 -->
-        <div class="card">
-          <h3>Flyers - La Popote des Îles</h3>
-          <div class="card-img-wrapper">
-            <img src="https://i.ibb.co/7JyRDXJv/flyer-new.png" alt="La Popote des Îles" loading="lazy">
-            <div class="card-overlay">Voir le projet</div>
-          </div>
-        </div>
-
-        <!-- Projet 2 -->
-        <div class="card">
-          <h3>Template - Viana Hairbody</h3>
-          <p>Produits de beauté naturels et soins cosmétiques.</p>
-          <div class="card-img-wrapper">
-            <img src="https://i.ibb.co/MkRpvJGS/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Viana Hairbody" loading="lazy">
-            <div class="card-overlay">Voir le projet</div>
-          </div>
-        </div>
-
-        <!-- Projet 3 -->
-        <div class="card">
-          <h3>Logo - Evasion Nautique</h3>
-          <p>Excursions touristiques et location de matériel nautique.</p>
-          <div class="card-img-wrapper">
-            <img src="https://i.postimg.cc/02hSrc9x/EVASION.png" alt="Evasion Nautique" loading="lazy">
-            <div class="card-overlay">Voir le projet</div>
-          </div>
-        </div>
-
-        <!-- Projet 4 -->
-        <div class="card">
-          <h3>Au Bouti Food</h3>
-          <p>« C'est la faim qui annonce l'heure ». Repas savoureux et généreux à Marie-Galante.</p>
-          <div class="card-img-wrapper">
-            <img src="https://i.ibb.co/Ng1xLb61/au-bouti-food-modification.jpg" alt="Au Bouti Food" class="logo-medium" loading="lazy">
-            <div class="card-overlay">Voir le projet</div>
-          </div>
-        </div>
-
-        <!-- Projet 5 (Vidéo corrigée en image avec overlay) -->
-        <div class="card">
-          <h3>FastIdf - Taxi Moto</h3>
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1626248316551-22b66f531d1e?auto=format&fit=crop&w=800&q=80" alt="FastIdf Taxi Moto" loading="lazy">
-            <div class="card-overlay">▶ Voir la vidéo</div>
-          </div>
-        </div>
-
-        <!-- Projet 6 -->
-        <div class="card">
-          <h3>Logo - PA ESSAYE SA</h3>
-          <div class="card-img-wrapper">
-            <img src="https://i.ibb.co/kVdLD8q0/logo-premium.png" alt="Logo Premium" loading="lazy">
-            <div class="card-overlay">Voir le projet</div>
-          </div>
-        </div>
-
-        <!-- Projet 7 -->
-        <div class="card">
-          <h3>Logo - Cave de la Marina</h3>
-          <p>Identité visuelle pour cave à vin, design élégant mêlant univers maritime et œnologie.</p>
-          <div class="card-img-wrapper">
-            <img src="https://i.ibb.co/sp55M861/La-CAV.jpg" alt="Cave de la Marina" class="logo-medium" loading="lazy">
-            <div class="card-overlay">Voir le projet</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </div> <!-- Fin .container -->
-
-  <!-- ABOUT ME -->
-  <section id="about-me" class="about-section">
-    <div class="about-grid">
-      <div class="about-left">
-        <img src="https://i.ibb.co/wZkwrG0J/Chat-GPT-Image-21-sept-2026-00-10-48.png" alt="Photo de Anthony" class="avatar" loading="lazy">
-        <h2>Anthony</h2>
-        <p class="subtitle">Développeur Web & Designer</p>
-        <div class="contact-info">
-          <p>📍 Île-de-France - Dijon</p>
-          <p>📧 <a href="mailto:elisabethanthony@hotmail.fr">elisabethanthony@hotmail.fr</a></p>
-          <p>📞 <a href="tel:+33787155732">07 87 15 57 32</a></p>
-        </div>
-      </div>
-
-      <div class="about-right">
-        <h2>À propos de moi</h2>
-        <p>Passionné par la création digitale depuis l'âge de 15 ans, je conçois des sites web élégants, modernes et optimisés. Mon objectif est d'offrir une identité visuelle forte, professionnelle et parfaitement adaptée à chaque projet.</p>
-
-        <!-- SERVICES -->
-        <div class="services" id="services">
-          <h2>Mes services</h2>
-          <div class="services-grid">
-            <div class="service-card">
-              <div class="service-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-              </div>
-              <h3>Développement Web</h3>
-              <p>Sites vitrines premium, HTML/CSS, animations GSAP et design moderne.</p>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
-              </div>
-              <h3>Design Graphique</h3>
-              <p>Logos, flyers, affiches et identités visuelles haut de gamme.</p>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              </div>
-              <h3>WordPress</h3>
-              <p>Création et optimisation de sites WordPress professionnels.</p>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-              </div>
-              <h3>100% Responsive</h3>
-              <p>Adaptation parfaite sur mobile, tablette et ordinateur.</p>
-            </div>
-          </div>
-        </div>
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <h3>Design UI/UX</h3>
+        <p>Maquettes Figma et prototypes interactifs pour valider l'ergonomie avant développement.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SECTION TÉMOIGNAGES (Enrichie à 3 avis) -->
-  <section id="temoignages" style="padding: 60px 20px; background: #0d0d0d;">
-    <h2 style="color: var(--gold); text-align: center; margin-bottom: 40px;">Ce qu'ils disent de moi</h2>
-    <div class="cards" style="max-width: 1000px; margin: 0 auto;">
-      <div class="card" style="text-align: center;">
-        <p style="font-style: italic; margin-bottom: 15px;">"Anthony a été très professionnel et à l'écoute. Le logo correspond parfaitement à l'image de notre cave."</p>
-        <h4 style="color: var(--gold); font-size: 16px;">- Client Cave de la Marina</h4>
-      </div>
-      <div class="card" style="text-align: center;">
-        <p style="font-style: italic; margin-bottom: 15px;">"Un travail remarquable sur notre site vitrine. Anthony a su capturer l'essence de notre marque avec élégance."</p>
-        <h4 style="color: var(--gold); font-size: 16px;">- Viana Hairbody</h4>
-      </div>
-      <div class="card" style="text-align: center;">
-        <p style="font-style: italic; margin-bottom: 15px;">"Les flyers sont magnifiques et ont eu un excellent retour de nos clients. Un grand merci pour ce travail."</p>
-        <h4 style="color: var(--gold); font-size: 16px;">- La Popote des Îles</h4>
-      </div>
+<section id="video" class="reveal">
+  <div class="container">
+    <div class="section-header">
+      <h2>Découvrez mon travail en vidéo</h2>
+      <p>Une immersion dans mon processus créatif et mes réalisations</p>
     </div>
-  </section>
+    <div class="video-wrapper">
+      <iframe 
+        src=https://www.image2url.com/r2/default/videos/1790564322767-1d48385d-7ab2-4ce4-9d3d-7e92b539f3b5.mp4 
+        title="Portfolio Vidéo Anthony Elisabeth" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
 
-  <!-- FORMULAIRE DE CONTACT -->
-  <section class="contact-form-section" id="contact">
-    <div class="form-container">
-      <h2 class="form-title">Parlez-moi de votre projet</h2>
-      <p class="form-subtitle">Remplissez ce formulaire et je vous recontacte sous 24h.</p>
+<section id="portfolio" class="reveal">
+  <div class="container">
+    <div class="section-header">
+      <h2>Projets récents</h2>
+      <p>Une sélection de mes réalisations</p>
+    </div>
+    <div class="portfolio-grid">
       
-      <form class="contact-form" action="https://formspree.io/f/moevwpnl" method="POST">
-        <div class="form-row">
-          <div class="input-group">
-            <input type="text" name="nom" placeholder="Votre nom complet" required>
+      <!-- Projet 1 -->
+      <div class="project">
+        <div class="project-img">
+          <img src="https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Site Viana Hairbody">
+        </div>
+        <div class="project-info">
+          <h3>Viana Hairbody</h3>
+          <p>Site e-commerce pour une marque de soins naturels. Design élégant mettant en avant les ingrédients 100% naturels et la fabrication artisanale.</p>
+          <div class="tags">
+            <span class="tag-sm">WordPress</span>
+            <span class="tag-sm">E-commerce</span>
+            <span class="tag-sm">UI/UX</span>
           </div>
-          <div class="input-group">
-            <input type="email" name="email" placeholder="Votre adresse email" required>
+        </div>
+      </div>
+
+      <!-- Projet 2 -->
+      <div class="project">
+        <div class="project-img">
+          <img src="https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg" alt="Flyer Au Bouti Food">
+        </div>
+        <div class="project-info">
+          <h3>Au Bouti Food</h3>
+          <p>Identité visuelle et supports de communication pour un restaurant de grillades. Création de flyers et menus avec une ambiance chaleureuse.</p>
+          <div class="tags">
+            <span class="tag-sm">Photoshop</span>
+            <span class="tag-sm">Illustrator</span>
+            <span class="tag-sm">Print</span>
           </div>
         </div>
-        
-        <div class="input-group">
-          <input type="tel" name="telephone" placeholder="Votre téléphone (optionnel)">
+      </div>
+
+      <!-- Projet 3 -->
+      <div class="project">
+        <div class="project-img">
+          <img src="https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png" alt="Flyer La Papote des Iles">
         </div>
-        
-        <div class="input-group">
-          <textarea name="message" placeholder="Décrivez votre projet, vos besoins et vos délais..." rows="5" required></textarea>
+        <div class="project-info">
+          <h3>La Papote des Iles</h3>
+          <p>Support de communication pour un restaurant de cuisine antillaise. Design coloré mettant en valeur les plats et le service de livraison.</p>
+          <div class="tags">
+            <span class="tag-sm">Photoshop</span>
+            <span class="tag-sm">Design</span>
+            <span class="tag-sm">Communication</span>
+          </div>
         </div>
-        
-        <button type="submit" class="form-btn" id="submit-btn">Envoyer ma demande ✉️</button>
-        
-        <p class="form-success" id="form-success">✅ Merci ! Votre message a bien été envoyé.</p>
-        <p class="form-error" id="form-error">❌ Oups ! Une erreur est survenue. Réessaie ou écris-moi directement.</p>
-      </form>
+      </div>
+
+      <!-- NOUVEAU PROJET 4 : FastIdf -->
+      <div class="project">
+        <div class="project-img">
+          <img src="https://i.ibb.co/q3gLGdj0/Capture-d-e-cran-2026-09-28-a-04-39-27.png" alt="Projet FastIdf Taxi Moto">
+        </div>
+        <div class="project-info">
+          <h3>Célio - Redesign E-commerce</h3>
+          <p>Maquette UI/UX complète pour le redesign du site e-commerce Célio. Refonte de l'interface avec mise en avant des promotions (-60%), amélioration de l'expérience utilisateur et optimisation du parcours d'achat. Design moderne avec sections actu, collections et newsletter intégrées.</p>
+          <div class="tags">
+            <span class="tag-sm">WordPress</span>
+            <span class="tag-sm">UI/UX</span>
+            <span class="tag-sm">Responsive</span>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2>Créons ensemble votre identité</h2>
-    <div class="cta-buttons">
-      <a href="mailto:conceptartdesig@gmail.com" class="cta-btn email">✉️ M'envoyer un email</a>
-      <a href="https://www.instagram.com/conceptartdesign2024" target="_blank" class="cta-btn">📸 Instagram</a>
+<section id="contact" class="reveal">
+  <div class="container">
+    <div class="contact-box">
+      <h2>Prêt à démarrer ?</h2>
+      <p>Discutons de votre projet autour d'un café (ou en visio).</p>
+      <div class="contact-links">
+        <a href="mailto:Melisabethanthony@hotmail.fr" class="contact-link">📧 Melisabethanthony@hotmail.fr</a>
+        <a href="tel:0787155732" class="contact-link">📞 07 87 15 57 32</a>
+        <a href="#" class="contact-link">📍 Dijon, France</a>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 — ConceptArtDesign • Tous droits réservés</p>
-  </footer>
+<footer>
+  <div class="container">
+    © 2026 Anthony Elisabeth. Conçu avec passion à Dijon.
+  </div>
+</footer>
 
-  <!-- SCRIPTS -->
-  <script>
-    // 1. Gestion du Menu Mobile
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileNav = document.querySelector('.mobile-nav');
-    
-    if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('active');
-        mobileMenuBtn.innerHTML = mobileNav.classList.contains('active') ? '✕' : '☰';
-      });
+<script>
+  window.addEventListener('scroll', reveal);
+  function reveal() {
+    var reveals = document.querySelectorAll('.reveal');
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var revealTop = reveals[i].getBoundingClientRect().top;
+      var revealPoint = 150;
+      if (revealTop < windowHeight - revealPoint) {
+        reveals[i].classList.add('active');
+      }
     }
-
-    // Fermer le menu mobile quand on clique sur un lien
-    document.querySelectorAll('.mobile-nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
-        mobileMenuBtn.innerHTML = '☰';
-      });
-    });
-
-    // 2. Gestion fluide du formulaire Formspree
-    const form = document.querySelector('.contact-form');
-    if (form) {
-      form.addEventListener('submit', async function(event) {
-        event.preventDefault();
-        
-        const btn = document.getElementById('submit-btn');
-        const successMsg = document.getElementById('form-success');
-        const errorMsg = document.getElementById('form-error');
-        const originalText = btn.innerText;
-        
-        successMsg.style.display = 'none';
-        errorMsg.style.display = 'none';
-        
-        btn.innerText = 'Envoi en cours...';
-        btn.disabled = true;
-        
-        try {
-          const response = await fetch('https://formspree.io/f/moevwpnl', {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (response.ok) {
-            btn.innerText = 'Envoyé !';
-            successMsg.style.display = 'block';
-            form.reset();
-            
-            setTimxeout(() => {
-              btn.innerText = originalText;
-              btn.disabled = false;
-              successMsg.style.display = 'none';
-            }, 5000);
-          } else {
-            throw new Error('Erreur');
-          }
-        } catch (error) {
-          btn.innerText = originalText;
-          btn.disabled = false;
-          errorMsg.style.display = 'block';
-        }
-      });
-    }
-
-    // 3. Animations GSAP
-    gsap.registerPlugin(ScrollTrigger);
-    
-    gsap.from("header#main-header", { opacity: 0, duration: 1, y: -20, ease: "power3.out" });
-    gsap.to(".hero h1", { opacity: 1, y: 0, duration: 1, ease: "power3.out" });
-    gsap.to(".hero p", { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: "power3.out" });
-    gsap.to(".hero .btn-primary, .hero .btn-secondary", { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power3.out" });
-    gsap.to(".hero .card", { opacity: 1, y: 0, duration: 1, delay: 0.4, ease: "power3.out" });
-
-    gsap.utils.toArray("section h2, .section-sub, .card, .service-card, .form-title, .form-subtitle, .contact-form").forEach(el => {
-      gsap.from(el, {
-        scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" },
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power3.out"
-      });
-    });
-  </script>
+  }
+  reveal();
+</script>
 
 </body>
 </html>

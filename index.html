@@ -1,514 +1,491 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anthony Elisabeth | Concepteur Web & UI/UX</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: rgba(255, 255, 255, 0.03);
-    --border: rgba(255, 255, 255, 0.08);
-    --primary: #3b82f6;
-    --accent: #d946ef;
-    --text: #f8fafc;
-    --text-muted: #94a3b8;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-    line-height: 1.6;
-  }
-  h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
-  
-  .bg-gradient {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: 
-      radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.12), transparent 25%),
-      radial-gradient(circle at 85% 30%, rgba(217, 70, 239, 0.12), transparent 25%);
-    z-index: -1;
-    animation: gradientMove 15s ease infinite;
-  }
-  @keyframes gradientMove {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-20px, -20px) scale(1.1); }
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anthony Elisabeth | Concepteur Web & UI/UX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --primary: #3b82f6;
+      --accent: #d946ef;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
 
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-  nav {
-    position: fixed; top: 0; width: 100%;
-    padding: 20px 0; z-index: 100;
-    background: rgba(10, 10, 15, 0.8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-  .logo { font-family: 'Outfit'; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
-  .logo span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.3s; position: relative; }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: -5px; left: 0;
-    width: 0; height: 2px; background: linear-gradient(135deg, var(--primary), var(--accent));
-    transition: width 0.3s;
-  }
-  .nav-links a:hover::after { width: 100%; }
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
 
-  .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; }
-  .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
-  .tag {
-    display: inline-block; padding: 6px 16px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 50px; font-size: 0.85rem; color: var(--primary);
-    margin-bottom: 24px;
-    animation: fadeInDown 1s ease;
-  }
-  .hero h1 {
-    font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; font-weight: 800;
-    margin-bottom: 24px; letter-spacing: -1.5px;
-  }
-  .hero h1 .gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: gradientText 3s linear infinite;
-  }
-  @keyframes gradientText {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-  }
-  .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 500px; animation: fadeInUp 1s ease 0.3s both; }
-  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeInUp 1s ease 0.6s both; }
-  .btn {
-    padding: 14px 32px; border-radius: 50px; font-weight: 600;
-    text-decoration: none; transition: all 0.3s; font-size: 0.95rem;
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4); }
-  .btn-secondary {
-    background: var(--surface); color: var(--text); border: 1px solid var(--border);
-  }
-  .btn-secondary:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    /* Background Animation */
+    .bg-gradient {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: 
+        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.12), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(217, 70, 239, 0.12), transparent 25%);
+      z-index: -1;
+      animation: gradientMove 15s ease infinite;
+    }
+    @keyframes gradientMove {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-20px, -20px) scale(1.1); }
+    }
 
-  .hero-visual {
-    aspect-ratio: 1; border-radius: 30px;
-    background-image: url('https://images.unsplash.com/photo-1626248316551-22b66f531d1e?auto=format&fit=crop&w=800&q=80');
-    background-size: cover;
-    background-position: center;
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-    animation: float 6s ease-in-out infinite;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  .hero-visual::before {
-    content: '</>'; font-family: monospace; font-size: 8rem; font-weight: 800;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    opacity: 0.8;
-    text-shadow: 0 0 30px rgba(0,0,0,0.5);
-  }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-  section { padding: 100px 0; }
-  .section-header { text-align: center; margin-bottom: 60px; }
-  .section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
-  .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+    /* Navigation */
+    nav {
+      position: fixed; top: 0; width: 100%;
+      padding: 20px 0; z-index: 100;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Outfit'; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
+    .logo span { 
+      background: linear-gradient(135deg, var(--primary), var(--accent)); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { 
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; 
+      transition: all 0.3s; position: relative; 
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -5px; left: 0;
+      width: 0; height: 2px; background: linear-gradient(135deg, var(--primary), var(--accent));
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
 
-  .profil-box {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 30px; padding: 50px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
-    transition: transform 0.3s;
-  }
-  .profil-box:hover { transform: translateY(-5px); }
-  .profil-text h3 { font-size: 1.8rem; margin-bottom: 20px; }
-  .profil-text p { color: var(--text-muted); margin-bottom: 15px; font-size: 1.05rem; }
-  .profil-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .stat-card {
-    background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-    border-radius: 20px; padding: 25px; text-align: center;
-    transition: all 0.3s;
-  }
-  .stat-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    background: rgba(255,255,255,0.05);
-    border-color: rgba(59, 130, 246, 0.3);
-  }
-  .stat-card .icon { font-size: 2rem; margin-bottom: 10px; }
-  .stat-card h4 { font-size: 1rem; margin-bottom: 5px; }
-  .stat-card p { font-size: 0.85rem; color: var(--text-muted); }
+    /* Hero Section */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
+    .tag {
+      display: inline-block; padding: 6px 16px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 50px; font-size: 0.85rem; color: var(--primary);
+      margin-bottom: 24px; animation: fadeInDown 1s ease;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; font-weight: 800;
+      margin-bottom: 24px; letter-spacing: -1.5px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-size: 200% auto; animation: gradientText 3s linear infinite;
+    }
+    @keyframes gradientText {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .hero p { 
+      font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 500px; 
+      animation: fadeInUp 1s ease 0.3s both; 
+    }
+    .btn-group { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeInUp 1s ease 0.6s both; }
+    .btn {
+      padding: 14px 32px; border-radius: 50px; font-weight: 600;
+      text-decoration: none; transition: all 0.3s; font-size: 0.95rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4); }
+    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
 
-  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-  .card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 20px; padding: 32px; transition: all 0.4s;
-  }
-  .card:hover {
-    transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.3);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  }
-  .card-icon {
-    width: 50px; height: 50px; border-radius: 12px;
-    background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(217,70,239,0.2));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; margin-bottom: 20px;
-    transition: transform 0.3s;
-  }
-  .card:hover .card-icon { transform: rotate(360deg) scale(1.1); }
-  .card h3 { font-size: 1.25rem; margin-bottom: 12px; }
-  .card p { color: var(--text-muted); font-size: 0.95rem; }
+    .hero-visual {
+      aspect-ratio: 1; border-radius: 30px;
+      background-image: url('https://images.unsplash.com/photo-1626248316551-22b66f531d1e?auto=format&fit=crop&w=800&q=80');
+      background-size: cover; background-position: center;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      animation: float 6s ease-in-out infinite;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .hero-visual::before {
+      content: '</>'; font-family: monospace; font-size: 8rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      opacity: 0.8; text-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
 
-  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
-  .project {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 20px; overflow: hidden; transition: all 0.4s;
-  }
-  .project:hover { transform: translateY(-5px); border-color: rgba(217, 70, 239, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-  .project-img, .project-video {
-    height: 280px;
-    overflow: hidden;
-    position: relative;
-  }
-  .project-img::after {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(217,70,239,0.2));
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .project:hover .project-img::after { opacity: 1; }
-  .project-img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s;
-  }
-  .project:hover .project-img img { transform: scale(1.1); }
-  
-  /* Video Wrapper */
-  .project-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .project-info { padding: 28px; }
-  .project-info h3 { font-size: 1.3rem; margin-bottom: 8px; }
-  .project-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
-  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tag-sm {
-    padding: 4px 12px; background: rgba(255,255,255,0.05);
-    border-radius: 20px; font-size: 0.75rem; color: var(--text-muted);
-    transition: all 0.3s;
-  }
-  .tag-sm:hover { background: var(--primary); color: white; }
+    /* Sections Globales */
+    section { padding: 100px 0; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .section-header p { color: var(--text-muted); font-size: 1.1rem; }
 
-  .video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    background: #000;
-  }
-  .video-wrapper iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    border: none;
-  }
+    /* Profil */
+    .profil-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 30px; padding: 50px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+      transition: transform 0.3s;
+    }
+    .profil-box:hover { transform: translateY(-5px); }
+    .profil-text h3 { font-size: 1.8rem; margin-bottom: 20px; }
+    .profil-text p { color: var(--text-muted); margin-bottom: 15px; font-size: 1.05rem; }
+    .profil-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .stat-card {
+      background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+      border-radius: 20px; padding: 25px; text-align: center; transition: all 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      background: rgba(255,255,255,0.05); border-color: rgba(59, 130, 246, 0.3);
+    }
+    .stat-card .icon { font-size: 2rem; margin-bottom: 10px; }
+    .stat-card h4 { font-size: 1rem; margin-bottom: 5px; }
+    .stat-card p { font-size: 0.85rem; color: var(--text-muted); }
 
-  .contact-box {
-    background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(217,70,239,0.1));
-    border: 1px solid var(--border); border-radius: 30px;
-    padding: 60px; text-align: center;
-    transition: transform 0.3s;
-  }
-  .contact-box:hover { transform: translateY(-5px); }
-  .contact-box h2 { font-size: 2.5rem; margin-bottom: 16px; }
-  .contact-box p { color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem; }
-  .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
-  .contact-link {
-    padding: 12px 24px; background: var(--surface); border: 1px solid var(--border);
-    border-radius: 50px; color: var(--text); text-decoration: none;
-    transition: all 0.3s; font-size: 0.95rem;
-  }
-  .contact-link:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); transform: translateY(-2px); }
+    /* Services */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px; transition: all 0.4s;
+    }
+    .card:hover {
+      transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.3);
+      background: rgba(255, 255, 255, 0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .card-icon {
+      width: 50px; height: 50px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(217,70,239,0.2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 20px; transition: transform 0.3s;
+    }
+    .card:hover .card-icon { transform: rotate(360deg) scale(1.1); }
+    .card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+    .card p { color: var(--text-muted); font-size: 0.95rem; }
 
-  footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); }
+    /* Portfolio */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+    .project {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden; transition: all 0.4s;
+    }
+    .project:hover { transform: translateY(-5px); border-color: rgba(217, 70, 239, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .project-img, .project-video { height: 280px; overflow: hidden; position: relative; }
+    .project-img::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(217,70,239,0.2));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .project:hover .project-img::after { opacity: 1; }
+    .project-img img, .project-video video {
+      width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;
+    }
+    .project:hover .project-img img { transform: scale(1.1); }
+    .project-info { padding: 28px; }
+    .project-info h3 { font-size: 1.3rem; margin-bottom: 8px; }
+    .project-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag-sm {
+      padding: 4px 12px; background: rgba(255,255,255,0.05);
+      border-radius: 20px; font-size: 0.75rem; color: var(--text-muted); transition: all 0.3s;
+    }
+    .tag-sm:hover { background: var(--primary); color: white; }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    /* Video Wrapper Global */
+    .video-wrapper {
+      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+      border-radius: 20px; border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3); background: #000;
+    }
+    .video-wrapper video, .video-wrapper iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
 
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    /* Contact */
+    .contact-box {
+      background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(217,70,239,0.1));
+      border: 1px solid var(--border); border-radius: 30px;
+      padding: 60px; text-align: center; transition: transform 0.3s;
+    }
+    .contact-box:hover { transform: translateY(-5px); }
+    .contact-box h2 { font-size: 2.5rem; margin-bottom: 16px; }
+    .contact-box p { color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem; }
+    .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .contact-link {
+      padding: 12px 24px; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 50px; color: var(--text); text-decoration: none;
+      transition: all 0.3s; font-size: 0.95rem;
+    }
+    .contact-link:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); transform: translateY(-2px); }
 
-  @media (max-width: 768px) {
-    .hero-grid, .profil-box { grid-template-columns: 1fr; text-align: center; }
-    .hero p { margin: 0 auto 40px; }
-    .btn-group { justify-content: center; }
-    .nav-links { display: none; }
-    .contact-box { padding: 40px 20px; }
-    section { padding: 80px 0; }
-  }
-</style>
+    /* Footer */
+    footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); }
+
+    /* Animations */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-grid, .profil-box { grid-template-columns: 1fr; text-align: center; }
+      .hero p { margin: 0 auto 40px; }
+      .btn-group { justify-content: center; }
+      .nav-links { display: none; }
+      .contact-box { padding: 40px 20px; }
+      section { padding: 80px 0; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="bg-gradient"></div>
+  <div class="bg-gradient"></div>
 
-<nav>
-  <div class="container nav-inner">
-    <div class="logo">Anthony<span>.</span></div>
-    <ul class="nav-links">
-      <li><a href="#profil">Profil</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#video">Vidéo</a></li>
-      <li><a href="#portfolio">Projets</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <span class="tag">Disponible pour vos projets</span>
-      <h1>Concepteur Web & <br><span class="gradient">Designer UI/UX</span></h1>
-      <p>Je transforme vos idées en sites web modernes. Spécialisé WordPress, Elementor et Shopify, j'allie créativité et rigueur technique.</p>
-      <div class="btn-group">
-        <a href="#portfolio" class="btn btn-primary">Voir mes projets</a>
-        <a href="tel:0787155732" class="btn btn-secondary">📞 M'appeler</a>
-      </div>
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">Anthony<span>.</span></div>
+      <ul class="nav-links">
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#video">Vidéo</a></li>
+        <li><a href="#portfolio">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <div class="hero-visual"></div>
-  </div>
-</section>
+  </nav>
 
-<section id="profil" class="reveal">
-  <div class="container">
-    <div class="section-header">
-      <h2>Mon Profil</h2>
-      <p>Passion, créativité et rigueur</p>
-    </div>
-    <div class="profil-box">
-      <div class="profil-text">
-        <h3>À propos de moi</h3>
-        <p>Passionné par l'univers créatif, je mets mon sens du détail et ma rigueur au service de vos projets digitaux.</p>
-        <p>Fort d'un background en prépresse et design graphique, je maîtrise la chaîne de création de la maquette (Figma, Adobe Suite) à l'intégration web (WordPress, Elementor, HTML/CSS).</p>
-        <p>Mon objectif : contribuer à des projets innovants et livrer des sites qui reflètent parfaitement votre identité.</p>
-      </div>
-      <div class="profil-stats">
-        <div class="stat-card">
-          <div class="icon">🎨</div>
-          <h4>Design</h4>
-          <p>Figma, Photoshop, Illustrator</p>
-        </div>
-        <div class="stat-card">
-          <div class="icon">💻</div>
-          <h4>Web</h4>
-          <p>WordPress, Elementor, HTML/CSS</p>
-        </div>
-        <div class="stat-card">
-          <div class="icon">🛍️</div>
-          <h4>E-commerce</h4>
-          <p>Shopify, Liquid, UX</p>
-        </div>
-        <div class="stat-card">
-          <div class="icon">🏎️</div>
-          <h4>Passions</h4>
-          <p>Natation, Musculation, Karting</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="tag">Disponible pour vos projets</span>
+        <h1>Concepteur Web & <br><span class="gradient">Designer UI/UX</span></h1>
+        <p>Je transforme vos idées en sites web modernes. Spécialisé WordPress, Elementor et Shopify, j'allie créativité et rigueur technique.</p>
+        <div class="btn-group">
+          <a href="#portfolio" class="btn btn-primary">Voir mes projets</a>
+          <a href="tel:0787155732" class="btn btn-secondary">📞 M'appeler</a>
         </div>
       </div>
+      <div class="hero-visual"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="services" class="reveal">
-  <div class="container">
-    <div class="section-header">
-      <h2>Ce que je crée</h2>
-      <p>Des solutions digitales sur mesure</p>
-    </div>
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-icon">🌐</div>
-        <h3>Sites Vitrines</h3>
-        <p>Design sur mesure et intégration WordPress/Elementor pour une présence en ligne professionnelle.</p>
+  <!-- Profil -->
+  <section id="profil" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Mon Profil</h2>
+        <p>Passion, créativité et rigueur</p>
       </div>
-      <div class="card">
-        <div class="card-icon">🛍️</div>
-        <h3>Boutiques Shopify</h3>
-        <p>Création et personnalisation de boutiques e-commerce optimisées pour la conversion.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🎨</div>
-        <h3>Design UI/UX</h3>
-        <p>Maquettes Figma et prototypes interactifs pour valider l'ergonomie avant développement.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="video" class="reveal">
-  <div class="container">
-    <div class="section-header">
-      <h2>Découvrez mon travail en vidéo</h2>
-      <p>Une immersion dans mon processus créatif et mes réalisations</p>
-    </div>
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" 
-        title="Portfolio Vidéo Anthony Elisabeth" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-</section>
-
-<section id="portfolio" class="reveal">
-  <div class="container">
-    <div class="section-header">
-      <h2>Projets récents</h2>
-      <p>Une sélection de mes réalisations</p>
-    </div>
-    <div class="portfolio-grid">
-      
-      <!-- Projet 1: Viana Hairbody -->
-      <div class="project">
-        <div class="project-img">
-          <img src="https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Site Viana Hairbody">
+      <div class="profil-box">
+        <div class="profil-text">
+          <h3>À propos de moi</h3>
+          <p>Passionné par l'univers créatif, je mets mon sens du détail et ma rigueur au service de vos projets digitaux.</p>
+          <p>Fort d'un background en prépresse et design graphique, je maîtrise la chaîne de création de la maquette (Figma, Adobe Suite) à l'intégration web (WordPress, Elementor, HTML/CSS).</p>
+          <p>Mon objectif : contribuer à des projets innovants et livrer des sites qui reflètent parfaitement votre identité.</p>
         </div>
-        <div class="project-info">
-          <h3>Viana Hairbody</h3>
-          <p>Site e-commerce pour une marque de soins naturels. Design élégant mettant en avant les ingrédients 100% naturels.</p>
-          <div class="tags">
-            <span class="tag-sm">WordPress</span>
-            <span class="tag-sm">E-commerce</span>
-            <span class="tag-sm">UI/UX</span>
+        <div class="profil-stats">
+          <div class="stat-card">
+            <div class="icon">🎨</div>
+            <h4>Design</h4>
+            <p>Figma, Photoshop, Illustrator</p>
+          </div>
+          <div class="stat-card">
+            <div class="icon">💻</div>
+            <h4>Web</h4>
+            <p>WordPress, Elementor, HTML/CSS</p>
+          </div>
+          <div class="stat-card">
+            <div class="icon">🛍️</div>
+            <h4>E-commerce</h4>
+            <p>Shopify, Liquid, UX</p>
+          </div>
+          <div class="stat-card">
+            <div class="icon">🏎️</div>
+            <h4>Passions</h4>
+            <p>Natation, Musculation, Karting</p>
           </div>
         </div>
       </div>
-
-      <!-- Projet 2: Au Bouti Food -->
-      <div class="project">
-        <div class="project-img">
-          <img src="https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg" alt="Flyer Au Bouti Food">
-        </div>
-        <div class="project-info">
-          <h3>Au Bouti Food</h3>
-          <p>Identité visuelle et supports de communication pour un restaurant de grillades. Flyers et menus.</p>
-          <div class="tags">
-            <span class="tag-sm">Photoshop</span>
-            <span class="tag-sm">Illustrator</span>
-            <span class="tag-sm">Print</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Projet 3: La Papote des Iles -->
-      <div class="project">
-        <div class="project-img">
-          <img src="https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png" alt="Flyer La Papote des Iles">
-        </div>
-        <div class="project-info">
-          <h3>La Papote des Iles</h3>
-          <p>Support de communication pour un restaurant de cuisine antillaise. Design coloré et appétissant.</p>
-          <div class="tags">
-            <span class="tag-sm">Photoshop</span>
-            <span class="tag-sm">Design</span>
-            <span class="tag-sm">Communication</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Projet 4: FastIdf - Taxi Moto (AVEC VIDEO) -->
-      <div class="project">
-        <div class="project-video">
-          <video controls poster="https://images.unsplash.com/photo-1626248316551-22b66f531d1e?auto=format&fit=crop&w=800&q=80">
-            <source src="https://www.image2url.com/r2/default/videos/1790564322767-1d48385d-7ab2-4ce4-9d3d-7e92b539f3b5.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture vidéo.
-          </video>
-        </div>
-        <div class="project-info">
-          <h3>FastIdf - Taxi Moto</h3>
-          <p>Conception d'une interface moderne pour un service de transport rapide en Île-de-France. Design jaune/noir impactant.</p>
-          <div class="tags">
-            <span class="tag-sm">WordPress</span>
-            <span class="tag-sm">UI/UX</span>
-            <span class="tag-sm">Responsive</span>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact" class="reveal">
-  <div class="container">
-    <div class="contact-box">
-      <h2>Prêt à démarrer ?</h2>
-      <p>Discutons de votre projet autour d'un café (ou en visio).</p>
-      <div class="contact-links">
-        <a href="mailto:Melisabethanthony@hotmail.fr" class="contact-link">📧 Melisabethanthony@hotmail.fr</a>
-        <a href="tel:0787155732" class="contact-link">📞 07 87 15 57 32</a>
-        <a href="#" class="contact-link">📍 Dijon, France</a>
+  <!-- Services -->
+  <section id="services" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ce que je crée</h2>
+        <p>Des solutions digitales sur mesure</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3>Sites Vitrines</h3>
+          <p>Design sur mesure et intégration WordPress/Elementor pour une présence en ligne professionnelle.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛍️</div>
+          <h3>Boutiques Shopify</h3>
+          <p>Création et personnalisation de boutiques e-commerce optimisées pour la conversion.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎨</div>
+          <h3>Design UI/UX</h3>
+          <p>Maquettes Figma et prototypes interactifs pour valider l'ergonomie avant développement.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="container">
-    © 2026 Anthony Elisabeth. Conçu avec passion à Dijon.
-  </div>
-</footer>
+  <!-- Vidéo Principale -->
+  <section id="video" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Découvrez mon travail en vidéo</h2>
+        <p>Une immersion dans mon processus créatif et mes réalisations</p>
+      </div>
+      <div class="video-wrapper">
+        <video controls poster="https://images.unsplash.com/photo-1626248316551-22b66f531d1e?auto=format&fit=crop&w=800&q=80">
+          <source src="https://www.image2url.com/r2/default/videos/1790564322767-1d48385d-7ab2-4ce4-9d3d-7e92b539f3b5.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture vidéo.
+        </video>
+      </div>
+    </div>
+  </section>
 
-<script>
-  window.addEventListener('scroll', reveal);
-  function reveal() {
-    var reveals = document.querySelectorAll('.reveal');
-    for (var i = 0; i < reveals.length; i++) {
-      var windowHeight = window.innerHeight;
-      var revealTop = reveals[i].getBoundingClientRect().top;
-      var revealPoint = 150;
-      if (revealTop < windowHeight - revealPoint) {
-        reveals[i].classList.add('active');
-      }
+  <!-- Portfolio -->
+  <section id="portfolio" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Projets récents</h2>
+        <p>Une sélection de mes réalisations</p>
+      </div>
+      <div class="portfolio-grid">
+        
+        <!-- Projet 1 -->
+        <div class="project">
+          <div class="project-img">
+            <img src="https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Site Viana Hairbody">
+          </div>
+          <div class="project-info">
+            <h3>Viana Hairbody</h3>
+            <p>Site e-commerce pour une marque de soins naturels. Design élégant mettant en avant les ingrédients 100% naturels.</p>
+            <div class="tags">
+              <span class="tag-sm">WordPress</span>
+              <span class="tag-sm">E-commerce</span>
+              <span class="tag-sm">UI/UX</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 2 -->
+        <div class="project">
+          <div class="project-img">
+            <img src="https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg" alt="Flyer Au Bouti Food">
+          </div>
+          <div class="project-info">
+            <h3>Au Bouti Food</h3>
+            <p>Identité visuelle et supports de communication pour un restaurant de grillades. Flyers et menus.</p>
+            <div class="tags">
+              <span class="tag-sm">Photoshop</span>
+              <span class="tag-sm">Illustrator</span>
+              <span class="tag-sm">Print</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 3 -->
+        <div class="project">
+          <div class="project-img">
+            <img src="https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png" alt="Flyer La Papote des Iles">
+          </div>
+          <div class="project-info">
+            <h3>La Papote des Iles</h3>
+            <p>Support de communication pour un restaurant de cuisine antillaise. Design coloré et appétissant.</p>
+            <div class="tags">
+              <span class="tag-sm">Photoshop</span>
+              <span class="tag-sm">Design</span>
+              <span class="tag-sm">Communication</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 4: FastIdf - Taxi Moto (IMAGE) -->
+<div class="project">
+  <div class="project-img">
+    <img src="https://i.ibb.co/q3gLGdj0/Capture-d-e-cran-2026-09-28-a-04-39-27.png" alt="Site FastIdf Taxi Moto">
+  </div>
+  <div class="project-info">
+    <h3>Célio - Redesign E-commerce</h3>
+    <p>Maquette UI/UX complète pour le redesign du site e-commerce Célio. Refonte de l'interface avec mise en avant des promotions (-60%), amélioration de l'expérience utilisateur et optimisation du parcours d'achat. Design moderne avec sections actu, collections et newsletter intégrées.
+.</p>
+    <div class="tags">
+      <span class="tag-sm">WordPress</span>
+      <span class="tag-sm">UI/UX</span>
+      <span class="tag-sm">Responsive</span>
+    </div>
+  </div>
+</div>
+  <!-- Contact -->
+  <section id="contact" class="reveal">
+    <div class="container">
+      <div class="contact-box">
+        <h2>Prêt à démarrer ?</h2>
+        <p>Discutons de votre projet autour d'un café (ou en visio).</p>
+        <div class="contact-links">
+          <a href="mailto:Melisabethanthony@hotmail.fr" class="contact-link">📧 Melisabethanthony@hotmail.fr</a>
+          <a href="tel:0787155732" class="contact-link">📞 07 87 15 57 32</a>
+          <a href="#" class="contact-link">📍 Dijon, France</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      © 2026 Anthony Elisabeth. Conçu avec passion à Dijon.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    window.addEventListener('scroll', reveal);
+    function reveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const revealTop = element.getBoundingClientRect().top;
+        const revealPoint = 150;
+        if (revealTop < windowHeight - revealPoint) {
+          element.classList.add('active');
+        }
+      });
     }
-  }
-  reveal();
-</script>
+    reveal(); // Déclenche au chargement
+  </script>
 
 </body>
 </html>

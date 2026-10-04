@@ -1,22 +1,14 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Anthony | Concepteur Web & Designer UI/UX</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+  <title>Anthony Elisabeth | Concepteur Web & Designer UI/UX</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+  
   <style>
-
     :root {
       --bg: #08080d;
-      --bg-secondary: #0d0d14;
       --card: rgba(255,255,255,0.04);
       --border: rgba(255,255,255,0.09);
       --primary: #3b82f6;
@@ -26,15 +18,8 @@
       --radius: 22px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: "Inter", sans-serif;
@@ -43,20 +28,6 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* =========================
-       BACKGROUND
-    ========================= */
 
     .background {
       position: fixed;
@@ -74,34 +45,15 @@
       opacity: .15;
     }
 
-    .glow.one {
-      background: var(--primary);
-      top: 10%;
-      left: -200px;
-    }
-
-    .glow.two {
-      background: var(--secondary);
-      right: -200px;
-      top: 35%;
-    }
-
-    /* =========================
-       CONTAINER
-    ========================= */
+    .glow.one { background: var(--primary); top: 10%; left: -200px; }
+    .glow.two { background: var(--secondary); right: -200px; top: 35%; }
 
     .container {
       width: min(1200px, calc(100% - 40px));
       margin: auto;
     }
 
-    section {
-      padding: 110px 0;
-    }
-
-    /* =========================
-       NAVIGATION
-    ========================= */
+    section { padding: 110px 0; }
 
     nav {
       position: fixed;
@@ -143,15 +95,10 @@
       color: var(--muted);
       font-size: .9rem;
       transition: .3s;
+      text-decoration: none;
     }
 
-    .nav-links a:hover {
-      color: white;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
+    .nav-links a:hover { color: white; }
 
     .hero {
       min-height: 100vh;
@@ -186,11 +133,7 @@
     }
 
     .gradient {
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
+      background: linear-gradient(135deg,var(--primary),var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -214,28 +157,27 @@
       border-radius: 50px;
       font-weight: 600;
       transition: .3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      text-decoration: none;
     }
 
     .btn-primary {
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
+      background: linear-gradient(135deg,var(--primary),var(--secondary));
+      color: white;
     }
 
     .btn-secondary {
       border: 1px solid var(--border);
       background: var(--card);
+      color: var(--text);
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    /* =========================
-       SECTION HEADER
-    ========================= */
+    .btn:hover { transform: translateY(-3px); }
 
     .section-header {
       text-align: center;
@@ -249,13 +191,7 @@
       margin-bottom: 10px;
     }
 
-    .section-header p {
-      color: var(--muted);
-    }
-
-    /* =========================
-       PROFIL
-    ========================= */
+    .section-header p { color: var(--muted); }
 
     .profile {
       display: grid;
@@ -281,9 +217,147 @@
       margin-bottom: 15px;
     }
 
-    /* =========================
-       SERVICES
-    ========================= */
+    .cv-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 50px;
+      margin-top: 40px;
+    }
+
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cv-info h3 {
+      font-family: "Outfit";
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    .cv-info p { color: var(--muted); }
+
+    .cv-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .cv-btn {
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: .3s;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .cv-btn-primary {
+      background: linear-gradient(135deg,var(--primary),var(--secondary));
+      color: white;
+    }
+
+    .cv-btn-secondary {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .cv-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(59,130,246,.3);
+    }
+
+    .cv-preview {
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .cv-img {
+      max-width: 900px;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      cursor: pointer;
+      transition: .3s;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+    .cv-img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 30px 80px rgba(59,130,246,.25);
+    }
+
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .cv-block h4 {
+      font-family: "Outfit";
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .cv-item { margin-bottom: 25px; }
+
+    .cv-item-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cv-item-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .cv-item-date {
+      color: var(--secondary);
+      font-size: .9rem;
+    }
+
+    .cv-item-subtitle {
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: 8px;
+    }
+
+    .cv-item ul {
+      color: var(--muted);
+      padding-left: 20px;
+      font-size: .9rem;
+    }
+
+    .cv-item li { margin-bottom: 5px; }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      padding: 8px 16px;
+      background: rgba(59,130,246,.15);
+      border: 1px solid rgba(59,130,246,.3);
+      border-radius: 50px;
+      font-size: .9rem;
+    }
 
     .services {
       display: grid;
@@ -319,10 +393,6 @@
       font-size: .95rem;
     }
 
-    /* =========================
-       GALERIE
-    ========================= */
-
     .gallery {
       display: grid;
       grid-template-columns: repeat(12,1fr);
@@ -338,33 +408,16 @@
       background: #111;
     }
 
-    .gallery-item:nth-child(1) {
-      grid-column: span 7;
-      aspect-ratio: 16/10;
-    }
-
-    .gallery-item:nth-child(2) {
-      grid-column: span 5;
-      aspect-ratio: 16/10;
-    }
-
-    .gallery-item:nth-child(3) {
-      grid-column: span 5;
-      aspect-ratio: 16/10;
-    }
-
-    .gallery-item:nth-child(4) {
-      grid-column: span 7;
-      aspect-ratio: 16/10;
-    }
+    .gallery-item:nth-child(1) { grid-column: span 7; aspect-ratio: 16/10; }
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3) { grid-column: span 5; aspect-ratio: 16/10; }
+    .gallery-item:nth-child(4) { grid-column: span 12; aspect-ratio: 21/9; }
 
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition:
-        transform .6s ease,
-        filter .4s ease;
+      transition: transform .6s ease, filter .4s ease;
     }
 
     .gallery-item:hover img {
@@ -379,17 +432,12 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 30px;
-      background: linear-gradient(
-        transparent 30%,
-        rgba(0,0,0,.9)
-      );
+      background: linear-gradient(transparent 30%, rgba(0,0,0,.9));
       opacity: 0;
       transition: .4s;
     }
 
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
 
     .gallery-overlay h3 {
       font-family: "Outfit";
@@ -412,10 +460,6 @@
       font-size: .75rem;
     }
 
-    /* =========================
-       LIGHTBOX
-    ========================= */
-
     .lightbox {
       position: fixed;
       inset: 0;
@@ -423,27 +467,25 @@
       display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,.94);
+      background: rgba(0,0,0,.95);
       padding: 30px;
     }
 
-    .lightbox.active {
-      display: flex;
-    }
+    .lightbox.active { display: flex; }
 
     .lightbox-content {
-      max-width: 1100px;
+      max-width: 1200px;
       width: 100%;
       text-align: center;
     }
 
     .lightbox img {
       max-width: 100%;
-      max-height: 78vh;
+      max-height: 85vh;
       margin: auto;
       border-radius: 15px;
       object-fit: contain;
-      box-shadow: 0 30px 100px rgba(0,0,0,.7);
+      box-shadow: 0 30px 100px rgba(0,0,0,.8);
     }
 
     .lightbox-title {
@@ -452,10 +494,9 @@
       font-size: 1.5rem;
     }
 
-    .lightbox-close {
+    .lightbox-close,
+    .lightbox-arrow {
       position: absolute;
-      top: 25px;
-      right: 30px;
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -464,44 +505,22 @@
       color: white;
       font-size: 1.5rem;
       cursor: pointer;
+      transition: .3s;
     }
 
-    .lightbox-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.08);
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+    .lightbox-close:hover,
+    .lightbox-arrow:hover { background: rgba(255,255,255,.15); }
 
-    .lightbox-prev {
-      left: 25px;
-    }
-
-    .lightbox-next {
-      right: 25px;
-    }
-
-    /* =========================
-       CONTACT
-    ========================= */
+    .lightbox-close { top: 25px; right: 30px; }
+    .lightbox-arrow { top: 50%; transform: translateY(-50%); }
+    .lightbox-prev { left: 25px; }
+    .lightbox-next { right: 25px; }
 
     .contact {
       padding: 70px 40px;
       text-align: center;
       border-radius: 30px;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(59,130,246,.12),
-          rgba(168,85,247,.12)
-        );
+      background: linear-gradient(135deg,rgba(59,130,246,.12),rgba(168,85,247,.12));
       border: 1px solid var(--border);
     }
 
@@ -529,16 +548,14 @@
       background: var(--card);
       border-radius: 50px;
       transition: .3s;
+      color: var(--text);
+      text-decoration: none;
     }
 
     .contact-link:hover {
       transform: translateY(-3px);
       border-color: var(--primary);
     }
-
-    /* =========================
-       WHATSAPP
-    ========================= */
 
     .whatsapp {
       position: fixed;
@@ -556,19 +573,8 @@
       transition: .3s;
     }
 
-    .whatsapp:hover {
-      transform: scale(1.1);
-    }
-
-    .whatsapp svg {
-      width: 32px;
-      height: 32px;
-      fill: white;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
+    .whatsapp:hover { transform: scale(1.1); }
+    .whatsapp svg { width: 32px; height: 32px; fill: white; }
 
     footer {
       padding: 40px 0;
@@ -578,832 +584,387 @@
       font-size: .9rem;
     }
 
-    /* =========================
-       TABLET
-    ========================= */
-
     @media(max-width:900px) {
-
-      .profile {
-        grid-template-columns: 1fr;
-      }
-
-      .services {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .gallery-item:nth-child(n) {
-        grid-column: span 6;
-      }
+      .profile, .cv-grid { grid-template-columns: 1fr; }
+      .services { grid-template-columns: 1fr 1fr; }
+      .cv-header { flex-direction: column; }
     }
-
-    /* =========================
-       MOBILE
-    ========================= */
 
     @media(max-width:650px) {
-
-      .container {
-        width: min(100% - 28px,1200px);
-      }
-
-      section {
-        padding: 80px 0;
-      }
-
-      .nav-inner {
-        height: 65px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        min-height: 90vh;
-        padding-top: 100px;
-      }
-
-      h1 {
-        font-size: 3rem;
-        letter-spacing: -2px;
-      }
-
-      .hero-text {
-        font-size: 1rem;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-
-      .section-header h2 {
-        font-size: 2.2rem;
-      }
-
-      .services {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-item:nth-child(n) {
-        grid-column: span 1;
-        aspect-ratio: 4/3;
-      }
-
-      .gallery-overlay {
-        opacity: 1;
-        padding: 20px;
-      }
-
-      .gallery-overlay h3 {
-        font-size: 1.2rem;
-      }
-
-      .lightbox {
-        padding: 15px;
-      }
-
-      .lightbox img {
-        max-height: 70vh;
-      }
-
-      .lightbox-arrow {
-        width: 45px;
-        height: 45px;
-      }
-
-      .lightbox-prev {
-        left: 10px;
-      }
-
-      .lightbox-next {
-        right: 10px;
-      }
-
-      .lightbox-close {
-        top: 15px;
-        right: 15px;
-      }
-
-      .contact {
-        padding: 50px 20px;
-      }
-
-      .contact h2 {
-        font-size: 2.2rem;
-      }
-
-      .whatsapp {
-        width: 55px;
-        height: 55px;
-        right: 18px;
-        bottom: 18px;
-      }
+      .container { width: calc(100% - 28px); }
+      section { padding: 80px 0; }
+      .nav-links { display: none; }
+      .hero { min-height: 90vh; padding-top: 100px; }
+      h1 { font-size: 3rem; letter-spacing: -2px; }
+      .services { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(n) { grid-column: span 12; aspect-ratio: 4/3; }
+      .cv-section { padding: 30px 20px; }
+      .cv-grid { gap: 20px; }
+      .cv-img { max-width: 100%; }
+      .lightbox-arrow { width: 45px; height: 45px; }
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
     }
-
   </style>
 </head>
 
 <body>
-
-  <!-- BACKGROUND -->
-
   <div class="background">
     <div class="glow one"></div>
     <div class="glow two"></div>
   </div>
 
-
-  <!-- NAVIGATION -->
-
   <nav>
-
     <div class="container nav-inner">
-
-      <div class="logo">
-        Anthony<span>.</span>
-      </div>
-
+      <div class="logo">Anthony<span>.</span></div>
       <ul class="nav-links">
         <li><a href="#profil">Profil</a></li>
+        <li><a href="#cv">CV</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-
     </div>
-
   </nav>
 
-
-  <!-- HERO -->
-
   <section class="hero">
-
     <div class="container">
-
       <div class="hero-content">
-
-        <span class="badge">
-          Disponible pour vos projets
-        </span>
-
-        <h1>
-          Concepteur Web &
-          <br>
-          <span class="gradient">
-            Designer UI/UX
-          </span>
-        </h1>
-
-        <p class="hero-text">
-          Je transforme vos idées en expériences digitales
-          modernes, élégantes et performantes.
-        </p>
-
+        <span class="badge">Disponible pour vos projets</span>
+        <h1>Concepteur Web & <span class="gradient">Designer UI/UX</span></h1>
+        <p class="hero-text">Je transforme vos idées en expériences digitales modernes, élégantes et performantes.</p>
         <div class="buttons">
-
-          <a
-            href="#portfolio"
-            class="btn btn-primary"
-          >
-            Voir mes réalisations
-          </a>
-
-          <a
-            href="tel:0787155732"
-            class="btn btn-secondary"
-          >
-            📞 07 87 15 57 32
-          </a>
-
+          <a href="#portfolio" class="btn btn-primary">Voir mes réalisations</a>
+          <a href="#cv" class="btn btn-secondary">📄 Voir mon CV</a>
+          <a href="tel:0787155732" class="btn btn-secondary">📞 07 87 15 57 32</a>
         </div>
-
       </div>
-
     </div>
-
   </section>
-
-
-  <!-- PROFIL -->
 
   <section id="profil">
-
     <div class="container">
-
       <div class="section-header">
-
-        <h2>
-          Mon profil
-        </h2>
-
-        <p>
-          Créativité, design et développement web
-        </p>
-
+        <h2>Mon profil</h2>
+        <p>Créativité, design et développement web</p>
       </div>
-
-
       <div class="profile">
-
         <div class="profile-card">
-
-          <h3>
-            À propos de moi
-          </h3>
-
-          <p>
-            Passionné par l'univers créatif, je mets mon
-            sens du détail et ma rigueur au service de
-            vos projets digitaux.
-          </p>
-
-          <p>
-            Je travaille sur la conception graphique,
-            le design UI/UX et la création de sites web.
-          </p>
-
-          <p>
-            Mon objectif est de créer des expériences
-            modernes qui correspondent réellement à
-            l'identité de chaque projet.
-          </p>
-
+          <h3>À propos de moi</h3>
+          <p>Passionné par l'univers créatif, je mets mon sens du détail et ma rigueur au service de vos projets digitaux.</p>
+          <p>Je travaille sur la conception graphique, le design UI/UX et la création de sites web.</p>
+          <p>Mon objectif est de créer des expériences modernes qui correspondent réellement à l'identité de chaque projet.</p>
         </div>
-
-
         <div class="profile-card">
-
-          <h3>
-            Mes compétences
-          </h3>
-
-          <p>
-            🎨 Design graphique — Photoshop, Illustrator
-          </p>
-
-          <p>
-            💻 Développement web — HTML, CSS, WordPress
-          </p>
-
-          <p>
-            🖥️ UI/UX — Figma & conception responsive
-          </p>
-
-          <p>
-            🛍️ E-commerce — Shopify
-          </p>
-
+          <h3>Mes compétences</h3>
+          <p> Design graphique — Photoshop, Illustrator</p>
+          <p>💻 Développement web — HTML, CSS, WordPress</p>
+          <p>️ UI/UX — Figma & conception responsive</p>
+          <p>🛍️ E-commerce — Shopify</p>
         </div>
-
       </div>
 
+      <div class="cv-section" id="cv">
+        <div class="cv-header">
+          <div class="cv-info">
+            <h3>Anthony ELISABETH</h3>
+            <p>36 ans, RQTH | Concepteur Designer UI/UX</p>
+            <p>📞 07 87 15 57 32 | ✉️ elisabethanthony@hotmail.fr</p>
+            <p>📍 36 cours fleury, Dijon 21000</p>
+          </div>
+          <div class="cv-actions">
+            <button class="cv-btn cv-btn-secondary" onclick="openCVLightbox()">👁️ Voir en grand</button>
+            <a href="https://i.ibb.co/xtSh9TNt/Black-and-Grey-Simple-Infographic-Resume.jpg" target="_blank" class="cv-btn cv-btn-primary">️ Télécharger</a>
+          </div>
+        </div>
+
+        <div class="cv-preview">
+          <img src="https://i.ibb.co/xtSh9TNt/Black-and-Grey-Simple-Infographic-Resume.jpg" alt="CV Anthony Elisabeth" class="cv-img" onclick="openCVLightbox()">
+        </div>
+
+        <div class="cv-grid">
+          <div class="cv-block">
+            <h4>Formation</h4>
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <span class="cv-item-title">Concepteur Designer UI/UX</span>
+                <span class="cv-item-date">2021-2022</span>
+              </div>
+              <div class="cv-item-subtitle">ONLINEFORMAPRO</div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h4>Expériences</h4>
+            
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <span class="cv-item-title">ESAT HABILIS</span>
+                <span class="cv-item-date">2025-2026</span>
+              </div>
+              <div class="cv-item-subtitle">Dijon 21000</div>
+              <ul>
+                <li>Imprimerie - Pliage notice EXOTEC</li>
+                <li>Sérigraphie - Press logo sur t-shirt</li>
+                <li>Développement WEB - Création de sites HTML/CSS, WordPress Elementor</li>
+              </ul>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <span class="cv-item-title">GUILLON SERVICE MANUTENTION</span>
+                <span class="cv-item-date">2019-2020</span>
+              </div>
+              <div class="cv-item-subtitle">Martinique 97200 - Intérim</div>
+              <ul>
+                <li>Chargement, déchargement de conteneur</li>
+              </ul>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <span class="cv-item-title">HOTEL BAMBOU</span>
+                <span class="cv-item-date">2018-2019</span>
+              </div>
+              <div class="cv-item-subtitle">Martinique - CDD</div>
+              <ul>
+                <li>Accueillir les clients, les installer à leur table</li>
+                <li>Prendre les commandes</li>
+              </ul>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <span class="cv-item-title">GRAPH'TY - Imprimerie</span>
+                <span class="cv-item-date">2017-2018</span>
+              </div>
+              <div class="cv-item-subtitle">Martinique - Stage</div>
+              <ul>
+                <li>Impression de cartes de visites, flyers, tracts</li>
+                <li>Conception de maquettes</li>
+                <li>Utilisation de massicot</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h4>Compétences techniques</h4>
+            <div class="skills-list">
+              <span class="skill-tag">WordPress</span>
+              <span class="skill-tag">Photoshop</span>
+              <span class="skill-tag">Illustrator</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">HTML/CSS</span>
+              <span class="skill-tag">Elementor</span>
+              <span class="skill-tag">UI/UX Design</span>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h4>Langues & Passions</h4>
+            <div class="cv-item">
+              <div class="cv-item-title">Français</div>
+            </div>
+            <div class="cv-item" style="margin-top: 20px;">
+              <div class="cv-item-title">Passions</div>
+              <div class="skills-list" style="margin-top: 10px;">
+                <span class="skill-tag">🏊 Natation</span>
+                <span class="skill-tag">💪 Musculation</span>
+                <span class="skill-tag">️ Karting</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
   </section>
-
-
-  <!-- SERVICES -->
 
   <section id="services">
-
     <div class="container">
-
       <div class="section-header">
-
-        <h2>
-          Mes services
-        </h2>
-
-        <p>
-          Des solutions digitales adaptées à votre projet
-        </p>
-
+        <h2>Mes services</h2>
+        <p>Des solutions digitales adaptées à votre projet</p>
       </div>
-
-
       <div class="services">
-
         <div class="service">
-
-          <div class="service-icon">
-            🌐
-          </div>
-
-          <h3>
-            Création de sites
-          </h3>
-
-          <p>
-            Sites vitrines modernes, responsive et
-            adaptés à votre activité.
-          </p>
-
+          <div class="service-icon">🌐</div>
+          <h3>Création de sites</h3>
+          <p>Sites vitrines modernes, responsive et adaptés à votre activité.</p>
         </div>
-
-
         <div class="service">
-
-          <div class="service-icon">
-            🎨
-          </div>
-
-          <h3>
-            Design UI/UX
-          </h3>
-
-          <p>
-            Interfaces modernes et intuitives pensées
-            pour offrir une excellente expérience utilisateur.
-          </p>
-
+          <div class="service-icon">🎨</div>
+          <h3>Design UI/UX</h3>
+          <p>Interfaces modernes et intuitives pensées pour offrir une excellente expérience utilisateur.</p>
         </div>
-
-
         <div class="service">
-
-          <div class="service-icon">
-            🛍️
-          </div>
-
-          <h3>
-            E-commerce
-          </h3>
-
-          <p>
-            Création et personnalisation de boutiques
-            en ligne modernes.
-          </p>
-
+          <div class="service-icon">🛍️</div>
+          <h3>E-commerce</h3>
+          <p>Création et personnalisation de boutiques en ligne modernes.</p>
         </div>
-
       </div>
-
     </div>
-
   </section>
-
-
-  <!-- PORTFOLIO -->
 
   <section id="portfolio">
-
     <div class="container">
-
       <div class="section-header">
-
-        <h2>
-          Mes réalisations
-        </h2>
-
-        <p>
-          Cliquez sur une réalisation pour l'afficher en grand.
-        </p>
-
+        <h2>Mes réalisations</h2>
+        <p>Cliquez sur une réalisation pour l'afficher en grand</p>
       </div>
-
-
       <div class="gallery">
-
-
-        <!-- VIANA HAIRBODY -->
-
-        <div
-          class="gallery-item"
-          onclick="openLightbox(0)"
-        >
-
-          <img
-            src="https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png"
-            alt="Viana Hairbody"
-            loading="lazy"
-          >
-
-          <span class="gallery-label">
-            E-commerce
-          </span>
-
+        <div class="gallery-item" onclick="openLightbox(0)">
+          <img src="https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Viana Hairbody" loading="lazy">
+          <span class="gallery-label">E-commerce</span>
           <div class="gallery-overlay">
-
-            <h3>
-              Viana Hairbody
-            </h3>
-
-            <p>
-              Site e-commerce • WordPress • UI/UX
-            </p>
-
+            <h3>Viana Hairbody</h3>
+            <p>Site e-commerce • WordPress • UI/UX</p>
           </div>
-
         </div>
-
-
-        <!-- AU BOUTI FOOD -->
-
-        <div
-          class="gallery-item"
-          onclick="openLightbox(1)"
-        >
-
-          <img
-            src="https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg"
-            alt="Au Bouti Food"
-            loading="lazy"
-          >
-
-          <span class="gallery-label">
-            Design graphique
-          </span>
-
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <img src="https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg" alt="Au Bouti Food" loading="lazy">
+          <span class="gallery-label">Design graphique</span>
           <div class="gallery-overlay">
-
-            <h3>
-              Au Bouti Food
-            </h3>
-
-            <p>
-              Identité visuelle • Flyer • Print
-            </p>
-
+            <h3>Au Bouti Food</h3>
+            <p>Identité visuelle • Flyer • Print</p>
           </div>
-
         </div>
-
-
-        <!-- LA PAPOTE DES ILES -->
-
-        <div
-          class="gallery-item"
-          onclick="openLightbox(2)"
-        >
-
-          <img
-            src="https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png"
-            alt="La Papote des Iles"
-            loading="lazy"
-          >
-
-          <span class="gallery-label">
-            Communication
-          </span>
-
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <img src="https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png" alt="La Papote des Iles" loading="lazy">
+          <span class="gallery-label">Communication</span>
           <div class="gallery-overlay">
-
-            <h3>
-              La Papote des Iles
-            </h3>
-
-            <p>
-              Communication • Design • Restaurant
-            </p>
-
+            <h3>La Papote des Iles</h3>
+            <p>Communication • Design • Restaurant</p>
           </div>
-
         </div>
-
-
-        <!-- CELIO -->
-
-        <div
-          class="gallery-item"
-          onclick="openLightbox(3)"
-        >
-
-          <img
-            src="https://i.ibb.co/q3gLGdj0/Capture-d-e-cran-2026-09-28-a-04-39-27.png"
-            alt="Projet Celio"
-            loading="lazy"
-          >
-
-          <span class="gallery-label">
-            UI/UX
-          </span>
-
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <img src="https://i.ibb.co/q3gLGdj0/Capture-d-e-cran-2026-09-28-a-04-39-27.png" alt="Projet Celio" loading="lazy">
+          <span class="gallery-label">UI/UX</span>
           <div class="gallery-overlay">
-
-            <h3>
-              Celio — Redesign
-            </h3>
-
-            <p>
-              Figma • UI/UX • Responsive
-            </p>
-
+            <h3>Celio — Redesign</h3>
+            <p>Figma • UI/UX • Responsive</p>
           </div>
-
         </div>
-
-
       </div>
-
     </div>
-
   </section>
 
-
-  <!-- LIGHTBOX -->
-
-  <div
-    class="lightbox"
-    id="lightbox"
-    onclick="closeOutside(event)"
-  >
-
-    <button
-      class="lightbox-close"
-      onclick="closeLightbox()"
-      aria-label="Fermer"
-    >
-      ✕
-    </button>
-
-
-    <button
-      class="lightbox-arrow lightbox-prev"
-      onclick="previousImage(event)"
-      aria-label="Projet précédent"
-    >
-      ‹
-    </button>
-
-
+  <div class="lightbox" id="lightbox" onclick="closeOutside(event)">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fermer">✕</button>
+    <button class="lightbox-arrow lightbox-prev" onclick="previousImage(event)" aria-label="Précédent">‹</button>
     <div class="lightbox-content">
-
-      <img
-        id="lightboxImage"
-        src=""
-        alt=""
-      >
-
-      <div
-        class="lightbox-title"
-        id="lightboxTitle"
-      ></div>
-
+      <img id="lightboxImage" src="" alt="">
+      <div class="lightbox-title" id="lightboxTitle"></div>
     </div>
-
-
-    <button
-      class="lightbox-arrow lightbox-next"
-      onclick="nextImage(event)"
-      aria-label="Projet suivant"
-    >
-      ›
-    </button>
-
+    <button class="lightbox-arrow lightbox-next" onclick="nextImage(event)" aria-label="Suivant">›</button>
   </div>
 
-
-  <!-- CONTACT -->
+  <div class="lightbox" id="cvLightbox" onclick="closeCVLightbox(event)">
+    <button class="lightbox-close" onclick="closeCVLightbox()" aria-label="Fermer">✕</button>
+    <div class="lightbox-content">
+      <img id="cvLightboxImage" src="https://i.ibb.co/xtSh9TNt/Black-and-Grey-Simple-Infographic-Resume.jpg" alt="CV Anthony Elisabeth">
+      <div class="lightbox-title">CV Anthony Elisabeth</div>
+    </div>
+  </div>
 
   <section id="contact">
-
     <div class="container">
-
       <div class="contact">
-
-        <h2>
-          Prêt à créer votre univers ?
-        </h2>
-
-        <p>
-          Parlons de votre projet et donnons-lui
-          une vraie identité digitale.
-        </p>
-
-
+        <h2>Prêt à créer votre univers ?</h2>
+        <p>Parlons de votre projet et donnons-lui une vraie identité digitale.</p>
         <div class="contact-links">
-
-          <a
-            href="mailto:conceptartdesig@gmail.com"
-            class="contact-link"
-          >
-            📧 conceptartdesig@gmail.com
-          </a>
-
-
-          <a
-            href="tel:0787155732"
-            class="contact-link"
-          >
-            📞 07 87 15 57 32
-          </a>
-
-
-          <a
-            href="#"
-            class="contact-link"
-          >
-            📍 Dijon, France
-          </a>
-
+          <a href="mailto:elisabethanthony@hotmail.fr" class="contact-link">📧 elisabethanthony@hotmail.fr</a>
+          <a href="tel:0787155732" class="contact-link">📞 07 87 15 57 32</a>
+          <a href="#" class="contact-link">📍 Dijon, France</a>
         </div>
-
       </div>
-
     </div>
-
   </section>
 
-
-  <!-- WHATSAPP -->
-
-  <a
-    href="https://wa.me/33787155732?text=Bonjour%20Anthony,%20je%20suis%20intéressé(e)%20par%20vos%20services."
-    class="whatsapp"
-    target="_blank"
-    aria-label="WhatsApp"
-  >
-
+  <a href="https://wa.me/33787155732?text=Bonjour%20Anthony,%20je%20suis%20intéressé(e)%20par%20vos%20services." class="whatsapp" target="_blank" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24">
-
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-
     </svg>
-
   </a>
 
-
-  <!-- FOOTER -->
-
   <footer>
-
     <div class="container">
-
-      © 2026 Anthony Elisabeth —
-      Concepteur Web & Designer UI/UX
-
+      © 2026 Anthony Elisabeth — Concepteur Web & Designer UI/UX
     </div>
-
   </footer>
 
-
-  <!-- JAVASCRIPT -->
-
   <script>
-
     const projects = [
-
-      {
-        image:
-          "https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png",
-        title:
-          "Viana Hairbody — Site e-commerce"
-      },
-
-      {
-        image:
-          "https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg",
-        title:
-          "Au Bouti Food — Identité visuelle"
-      },
-
-      {
-        image:
-          "https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png",
-        title:
-          "La Papote des Iles — Communication"
-      },
-
-      {
-        image:
-          "https://i.ibb.co/q3gLGdj0/Capture-d-e-cran-2026-09-28-a-04-39-27.png",
-        title:
-          "Celio — Redesign UI/UX"
-      }
-
+      { image: "https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png", title: "Viana Hairbody — Site e-commerce" },
+      { image: "https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg", title: "Au Bouti Food — Identité visuelle" },
+      { image: "https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png", title: "La Papote des Iles — Communication" },
+      { image: "https://i.ibb.co/q3gLGdj0/Capture-d-e-cran-2026-09-28-a-04-39-27.png", title: "Celio — Redesign UI/UX" }
     ];
 
-
     let currentImage = 0;
-
-
-    const lightbox =
-      document.getElementById("lightbox");
-
-    const lightboxImage =
-      document.getElementById("lightboxImage");
-
-    const lightboxTitle =
-      document.getElementById("lightboxTitle");
-
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxTitle = document.getElementById("lightboxTitle");
 
     function openLightbox(index) {
-
       currentImage = index;
-
-      lightboxImage.src =
-        projects[index].image;
-
-      lightboxImage.alt =
-        projects[index].title;
-
-      lightboxTitle.textContent =
-        projects[index].title;
-
+      lightboxImage.src = projects[index].image;
+      lightboxImage.alt = projects[index].title;
+      lightboxTitle.textContent = projects[index].title;
       lightbox.classList.add("active");
-
       document.body.style.overflow = "hidden";
     }
 
-
     function closeLightbox() {
-
       lightbox.classList.remove("active");
-
       document.body.style.overflow = "";
-
     }
-
 
     function closeOutside(event) {
-
-      if(event.target === lightbox) {
-        closeLightbox();
-      }
-
+      if(event.target === lightbox) closeLightbox();
     }
-
 
     function nextImage(event) {
-
       event.stopPropagation();
-
-      currentImage++;
-
-      if(currentImage >= projects.length) {
-        currentImage = 0;
-      }
-
+      currentImage = (currentImage + 1) % projects.length;
       updateLightbox();
-
     }
-
 
     function previousImage(event) {
-
       event.stopPropagation();
-
-      currentImage--;
-
-      if(currentImage < 0) {
-        currentImage = projects.length - 1;
-      }
-
+      currentImage = (currentImage - 1 + projects.length) % projects.length;
       updateLightbox();
-
     }
-
 
     function updateLightbox() {
-
-      lightboxImage.src =
-        projects[currentImage].image;
-
-      lightboxImage.alt =
-        projects[currentImage].title;
-
-      lightboxTitle.textContent =
-        projects[currentImage].title;
-
+      lightboxImage.src = projects[currentImage].image;
+      lightboxImage.alt = projects[currentImage].title;
+      lightboxTitle.textContent = projects[currentImage].title;
     }
 
+    const cvLightbox = document.getElementById("cvLightbox");
 
-    document.addEventListener(
-      "keydown",
-      function(event) {
+    function openCVLightbox() {
+      cvLightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
 
-        if(!lightbox.classList.contains("active")) {
-          return;
-        }
-
-        if(event.key === "Escape") {
-          closeLightbox();
-        }
-
-        if(event.key === "ArrowRight") {
-          nextImage(event);
-        }
-
-        if(event.key === "ArrowLeft") {
-          previousImage(event);
-        }
-
+    function closeCVLightbox(event) {
+      if(!event || event.target === cvLightbox) {
+        cvLightbox.classList.remove("active");
+        document.body.style.overflow = "";
       }
-    );
+    }
 
+    document.addEventListener("keydown", function(event) {
+      if(lightbox.classList.contains("active")) {
+        if(event.key === "Escape") closeLightbox();
+        if(event.key === "ArrowRight") nextImage(event);
+        if(event.key === "ArrowLeft") previousImage(event);
+      }
+      if(cvLightbox.classList.contains("active")) {
+        if(event.key === "Escape") closeCVLightbox();
+      }
+    });
   </script>
-
 </body>
 </html>
-

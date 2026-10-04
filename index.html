@@ -442,6 +442,51 @@
       transform: translateY(-2px);
     }
 
+    .clients {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 50px;
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .client-logo {
+      max-width: 280px;
+      width: 100%;
+      padding: 30px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: .4s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .client-logo:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 15px 40px rgba(59,130,246,.2);
+    }
+
+    .client-logo img {
+      max-width: 100%;
+      height: auto;
+      filter: brightness(0.9);
+      transition: .3s;
+    }
+
+    .client-logo:hover img {
+      filter: brightness(1);
+    }
+
     .services {
       display: grid;
       grid-template-columns: repeat(3,1fr);
@@ -476,71 +521,151 @@
       font-size: .95rem;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(12,1fr);
-      gap: 20px;
+    .portfolio {
+      background: linear-gradient(180deg, var(--bg) 0%, rgba(59,130,246,0.05) 50%, var(--bg) 100%);
     }
 
-    .gallery-item {
+    .portfolio-filter {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: .3s;
+      font-size: .95rem;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .portfolio-item {
       position: relative;
-      overflow: hidden;
       border-radius: var(--radius);
+      overflow: hidden;
       border: 1px solid var(--border);
       cursor: pointer;
       background: #111;
+      aspect-ratio: 16/10;
+      transition: .4s;
     }
 
-    .gallery-item:nth-child(1) { grid-column: span 7; aspect-ratio: 16/10; }
-    .gallery-item:nth-child(2),
-    .gallery-item:nth-child(3) { grid-column: span 5; aspect-ratio: 16/10; }
-    .gallery-item:nth-child(4) { grid-column: span 12; aspect-ratio: 21/9; }
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(59,130,246,.25);
+      border-color: rgba(59,130,246,.5);
+    }
 
-    .gallery-item img {
+    .portfolio-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .6s ease, filter .4s ease;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.06);
-      filter: brightness(.65);
+    .portfolio-item:hover img {
+      transform: scale(1.08);
+      filter: brightness(.5);
     }
 
-    .gallery-overlay {
+    .portfolio-overlay {
       position: absolute;
       inset: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       padding: 30px;
-      background: linear-gradient(transparent 30%, rgba(0,0,0,.9));
+      background: linear-gradient(transparent 40%, rgba(0,0,0,.95));
       opacity: 0;
       transition: .4s;
     }
 
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-
-    .gallery-overlay h3 {
-      font-family: "Outfit";
-      font-size: 1.5rem;
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
     }
 
-    .gallery-overlay p {
-      color: #cbd5e1;
-      font-size: .9rem;
-    }
-
-    .gallery-label {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      padding: 6px 12px;
+    .portfolio-category {
+      display: inline-block;
+      padding: 5px 14px;
+      background: var(--primary);
       border-radius: 50px;
-      background: rgba(0,0,0,.6);
-      backdrop-filter: blur(10px);
-      font-size: .75rem;
+      font-size: .8rem;
+      color: white;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .portfolio-overlay h3 {
+      font-family: "Outfit";
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .portfolio-overlay p {
+      color: #cbd5e1;
+      font-size: .95rem;
+      line-height: 1.5;
+    }
+
+    .portfolio-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .portfolio-tag {
+      padding: 5px 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .view-project {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      width: 70px;
+      height: 70px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: .4s;
+      box-shadow: 0 10px 30px rgba(59,130,246,.4);
+    }
+
+    .portfolio-item:hover .view-project {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .view-project svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
     }
 
     .lightbox {
@@ -671,6 +796,7 @@
       .profile, .cv-grid, .projects-grid, .skills-grid { grid-template-columns: 1fr; }
       .services { grid-template-columns: 1fr 1fr; }
       .cv-header { flex-direction: column; }
+      .portfolio-grid { grid-template-columns: 1fr; }
     }
 
     @media(max-width:650px) {
@@ -680,13 +806,14 @@
       .hero { min-height: 90vh; padding-top: 100px; }
       h1 { font-size: 3rem; letter-spacing: -2px; }
       .services { grid-template-columns: 1fr; }
-      .gallery-item:nth-child(n) { grid-column: span 12; aspect-ratio: 4/3; }
-      .cv-section { padding: 30px 20px; }
+      .cv-section, .clients { padding: 30px 20px; }
       .cv-grid { gap: 20px; }
       .cv-img { max-width: 100%; }
       .lightbox-arrow { width: 45px; height: 45px; }
       .lightbox-prev { left: 10px; }
       .lightbox-next { right: 10px; }
+      .portfolio-filter { gap: 10px; }
+      .filter-btn { padding: 8px 18px; font-size: .85rem; }
     }
   </style>
 </head>
@@ -703,6 +830,7 @@
       <ul class="nav-links">
         <li><a href="#profil">Profil</a></li>
         <li><a href="#cv">CV</a></li>
+        <li><a href="#clients">Clients</a></li>
         <li><a href="#projets">Projets</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
@@ -720,8 +848,8 @@
         <p class="hero-text">Passionné par le design et le web, je crée des expériences digitales modernes et performantes. 5+ projets web réalisés • 10+ designs graphiques</p>
         <div class="buttons">
           <a href="#portfolio" class="btn btn-primary">Voir mes réalisations</a>
-          <a href="#cv" class="btn btn-secondary">📄 Voir mon CV</a>
-          <a href="tel:0787155732" class="btn btn-secondary">📞 07 87 15 57 32</a>
+          <a href="#cv" class="btn btn-secondary"> Voir mon CV</a>
+          <a href="tel:0787155732" class="btn btn-secondary"> 07 87 15 57 32</a>
         </div>
       </div>
     </div>
@@ -763,7 +891,7 @@
               </div>
             </div>
             <div class="skill-category">
-              <h5>🖨️ Print</h5>
+              <h5>️ Print</h5>
               <div class="skills-list">
                 <span class="skill-tag">Sérigraphie</span>
                 <span class="skill-tag">PAO</span>
@@ -790,12 +918,12 @@
             <h3>Anthony ELISABETH</h3>
             <p>36 ans, RQTH | Concepteur Designer UI/UX</p>
             <p>📞 07 87 15 57 32 | ✉️ elisabethanthony@hotmail.fr</p>
-            <p>📍 36 cours fleury, Dijon 21000</p>
+            <p> 36 cours fleury, Dijon 21000</p>
             
             </div>
           </div>
           <div class="cv-actions">
-            <button class="cv-btn cv-btn-secondary" onclick="openCVLightbox()">👁️ Voir en grand</button>
+            <button class="cv-btn cv-btn-secondary" onclick="openCVLightbox()">️ Voir en grand</button>
             <a href="https://i.ibb.co/xtSh9TNt/Black-and-Grey-Simple-Infographic-Resume.jpg" target="_blank" class="cv-btn cv-btn-primary">⬇️ Télécharger CV</a>
           </div>
         </div>
@@ -869,7 +997,7 @@
           </div>
 
           <div class="cv-block">
-            <h4> Projets Réalisés</h4>
+            <h4>🚀 Projets Réalisés</h4>
             <div class="projects-grid">
               <div class="project-card">
                 <h5>Viana Hairbody</h5>
@@ -903,12 +1031,23 @@
               <ul>
                 <li> Natation - Sport régulier</li>
                 <li>💪 Musculation - Fitness</li>
-                <li>️ Karting - Passion mécanique</li>
+                <li>🏎️ Karting - Passion mécanique</li>
                 <li>🎨 Veille créative et design</li>
                 <li>💻 Nouvelles technologies web</li>
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+  </section>
+
+  <section id="clients">
+    <div class="container">
+      <div class="section-header">
+      </div>
+      <div class="clients">
+        <div class="clients-grid">
+          <!-- Section vide - à remplir ultérieurement -->
         </div>
       </div>
     </div>
@@ -922,7 +1061,7 @@
       </div>
       <div class="services">
         <div class="service">
-          <div class="service-icon">🌐</div>
+          <div class="service-icon"></div>
           <h3>Création de sites</h3>
           <p>Sites vitrines modernes, responsive et adaptés à votre activité.</p>
         </div>
@@ -940,43 +1079,109 @@
     </div>
   </section>
 
-  <section id="portfolio">
+  <!-- SECTION PORTFOLIO -->
+  <section id="portfolio" class="portfolio">
     <div class="container">
       <div class="section-header">
         <h2>Mes Réalisations</h2>
-        <p>Cliquez sur une réalisation pour l'afficher en grand</p>
+        <p>Découvrez mes projets récents et mon expertise en action</p>
       </div>
-      <div class="gallery">
-        <div class="gallery-item" onclick="openLightbox(0)">
+      
+      <div class="portfolio-filter">
+        <button class="filter-btn active" onclick="filterPortfolio('all')">Tous</button>
+        <button class="filter-btn" onclick="filterPortfolio('web')">Sites Web</button>
+        <button class="filter-btn" onclick="filterPortfolio('design')">Design</button>
+        <button class="filter-btn" onclick="filterPortfolio('ecommerce')">E-commerce</button>
+      </div>
+
+      <div class="portfolio-grid">
+        <!-- Cave de La Marina -->
+        <div class="portfolio-item" data-category="design" onclick="openLightbox(0)">
+          <img src="https://i.ibb.co/ZRfrnc9N/La-CAV.jpg" alt="Cave de La Marina" loading="lazy">
+          <div class="view-project">
+            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">Identité Visuelle</span>
+            <h3>Cave de La Marina</h3>
+            <p>Création de logo et identité visuelle pour cave à vin. Design élégant et maritime.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Illustrator</span>
+              <span class="portfolio-tag">Branding</span>
+              <span class="portfolio-tag">Logo Design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Viana Hairbody -->
+        <div class="portfolio-item" data-category="ecommerce" onclick="openLightbox(1)">
           <img src="https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png" alt="Viana Hairbody" loading="lazy">
-          <span class="gallery-label">E-commerce</span>
-          <div class="gallery-overlay">
+          <div class="view-project">
+            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">E-commerce</span>
             <h3>Viana Hairbody</h3>
-            <p>Site e-commerce • WordPress • UI/UX</p>
+            <p>Site e-commerce complet avec WordPress et WooCommerce. Design moderne et expérience utilisateur optimisée.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">WordPress</span>
+              <span class="portfolio-tag">WooCommerce</span>
+              <span class="portfolio-tag">UI/UX</span>
+            </div>
           </div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(1)">
+
+        <!-- Au Bouti Food -->
+        <div class="portfolio-item" data-category="design" onclick="openLightbox(2)">
           <img src="https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg" alt="Au Bouti Food" loading="lazy">
-          <span class="gallery-label">Design graphique</span>
-          <div class="gallery-overlay">
+          <div class="view-project">
+            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">Design Graphique</span>
             <h3>Au Bouti Food</h3>
-            <p>Identité visuelle • Flyer • Print</p>
+            <p>Création d'identité visuelle complète : logo, flyers, supports print et communication digitale.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Illustrator</span>
+              <span class="portfolio-tag">Print</span>
+              <span class="portfolio-tag">Branding</span>
+            </div>
           </div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(2)">
+
+        <!-- La Papote des Iles -->
+        <div class="portfolio-item" data-category="design" onclick="openLightbox(3)">
           <img src="https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png" alt="La Papote des Iles" loading="lazy">
-          <span class="gallery-label">Communication</span>
-          <div class="gallery-overlay">
+          <div class="view-project">
+            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">Communication</span>
             <h3>La Papote des Iles</h3>
-            <p>Communication • Design • Restaurant</p>
+            <p>Stratégie de communication et design pour restaurant. Création de supports marketing et identité visuelle.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Communication</span>
+              <span class="portfolio-tag">Marketing</span>
+              <span class="portfolio-tag">Design</span>
+            </div>
           </div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(3)">
+
+        <!-- Celio Redesign -->
+        <div class="portfolio-item" data-category="web" onclick="openLightbox(4)">
           <img src="https://i.ibb.co/q3gLGdj0/Capture-d-e-cran-2026-09-28-a-04-39-27.png" alt="Projet Celio" loading="lazy">
-          <span class="gallery-label">UI/UX</span>
-          <div class="gallery-overlay">
+          <div class="view-project">
+            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">UI/UX Design</span>
             <h3>Celio — Redesign</h3>
-            <p>Figma • UI/UX • Responsive</p>
+            <p>Refonte complète de l'interface utilisateur. Maquettes interactives sur Figma avec approche responsive.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Figma</span>
+              <span class="portfolio-tag">UI/UX</span>
+              <span class="portfolio-tag">Responsive</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1029,6 +1234,7 @@
 
   <script>
     const projects = [
+      { image: "https://i.ibb.co/ZRfrnc9N/La-CAV.jpg", title: "Cave de La Marina — Identité visuelle" },
       { image: "https://i.ibb.co/LDSQWdrz/Chat-GPT-Image-15-mai-2026-20-29-53.png", title: "Viana Hairbody — Site e-commerce" },
       { image: "https://i.ibb.co/ffxgt7x/au-bouti-food-modification.jpg", title: "Au Bouti Food — Identité visuelle" },
       { image: "https://i.ibb.co/LXLXbLkN/Chat-GPT-Image-13-sept-2026-12-47-25.png", title: "La Papote des Iles — Communication" },
@@ -1088,6 +1294,35 @@
         cvLightbox.classList.remove("active");
         document.body.style.overflow = "";
       }
+    }
+
+    // Filtre Portfolio
+    function filterPortfolio(category) {
+      const items = document.querySelectorAll('.portfolio-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+      
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if(btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent === 'Tous')) {
+          btn.classList.add('active');
+        }
+      });
+
+      items.forEach(item => {
+        if(category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+          }, 10);
+        } else {
+          item.style.opacity = '0';
+          item.style.transform = 'scale(0.8)';
+          setTimeout(() => {
+            item.style.display = 'none';
+          }, 300);
+        }
+      });
     }
 
     document.addEventListener("keydown", function(event) {
